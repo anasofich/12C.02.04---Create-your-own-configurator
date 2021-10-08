@@ -10,7 +10,7 @@
         fill-rule: evenodd;
       }
 
-      #shadow_Image {
+      #shadow-2_Image {
         pointer-events: none;
       }
     </style>

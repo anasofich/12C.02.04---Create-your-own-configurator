@@ -1,9 +1,12 @@
+#svgSection {
+  width: 350px;
+}
 .colors {
   padding-top: 2rem;
 }
 
 .colorSelector {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   display: inline-block;
 }
