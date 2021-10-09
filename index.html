@@ -8,9 +8,138 @@
     <title>Watch configurator</title>
   </head>
   <body>
-    <section id="svgSection"></section>
+    <div class="configuratorContainer">
+      <div class="leftSide">
+        <section id="svgSection"></section>
+      </div>
 
-    <div class="colors">
+      <div class="rightSide">
+        <section id="configuratorSec">
+          <div class="mainTitle">
+            <h3>CUSTOMIZE YOUR WATCH</h3>
+            <h1>Flick flack watch</h1>
+          </div>
+
+          <div class="selectedDiv">
+            <h2 class="selectedTitle">Selected</h2>
+            <div class="selectedFeatures">
+              <ul>
+                <div class="singleFeature">
+                  <div class="featureTitle">strap</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">dial</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">case</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">buckle</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">keeper</div>
+                  <div class="featureSymbol"></div>
+                </div>
+              </ul>
+            </div>
+          </div>
+
+          <div class="featuresSec">
+            <h2 class="featuresTitle">Available features</h2>
+
+            <div class="strapDialDiv">
+              <div class="strapDiv">
+                <h3 class="singleFeatureTitle">STRAP</h3>
+                <div class="row1">
+                  <div class="strapOption so1" data-feature="strap"></div>
+                  <div class="strapOption so2" data-feature="strap"></div>
+                  <div class="strapOption so3" data-feature="strap"></div>
+                </div>
+                <div class="row2">
+                  <div class="strapOption so4" data-feature="strap"></div>
+                  <div class="strapOption so5" data-feature="strap"></div>
+                  <div class="strapOption so6" data-feature="strap"></div>
+                </div>
+              </div>
+
+              <div class="dialDiv">
+                <h3 class="singleFeatureTitle">DIAL</h3>
+                <div class="row1">
+                  <div class="dialOption do1" data-feature="dial"></div>
+                  <div class="dialOption do2" data-feature="dial"></div>
+                  <div class="dialOption do3" data-feature="dial"></div>
+                </div>
+                <div class="row2">
+                  <div class="dialOption do4" data-feature="dial"></div>
+                  <div class="dialOption do5" data-feature="dial"></div>
+                  <div class="dialOption do6" data-feature="dial"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="colorsDiv">
+              <div class="caseDiv">
+                <h3 class="singleFeatureTitle">CASE</h3>
+                <div class="row1">
+                  <div class="colorSelector c1" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
+
+              <div class="buckleDiv">
+                <h3 class="singleFeatureTitle">BUCKLE</h3>
+                <div class="row1">
+                  <div class="colorSelector c1" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
+
+              <div class="keeperDiv">
+                <h3 class="singleFeatureTitle">KEEPER</h3>
+                <div class="row1">
+                  <div class="colorSelector c1" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="buttons">
+          <button class="reset">RESET</button>
+          <button class="save">SAVE</button>
+        </div>
+      </div>
+
+      <!--  <div class="colors">
       <div class="colorSelector c1" style="background-color: rgb(255, 14, 139)"></div>
       <div class="colorSelector c2" style="background-color: rgb(176, 26, 231)"></div>
       <div class="colorSelector c3" style="background-color: rgb(254, 74, 13)"></div>
@@ -20,8 +149,8 @@
       <div class="colorSelector c7" style="background-color: rgb(255, 239, 0)"></div>
       <div class="colorSelector c8" style="background-color: rgb(61, 255, 0)"></div>
       <div class="colorSelector c9" style="background-color: rgb(253, 119, 29)"></div>
+    </div> -->
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

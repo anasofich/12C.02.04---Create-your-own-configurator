@@ -1,12 +1,239 @@
-#svgSection {
-  width: 350px;
+@import url("https://use.typekit.net/kpr6mjz.css");
+@import url("https://use.typekit.net/moe7ljh.css");
+@import url("https://use.typekit.net/lmt8vks.css");
+
+:root {
+  --color-button: #ffd858;
+  --color-font: #cccdce;
+  --color-font2: #f98225;
+  --color1: #00bc9e;
+  --color2: #f98225;
+  --color3: #ee35af;
+  --color4: #312f30;
+  --color5: #0b33c2;
+  --color6: #ffd5f4;
+  --color7: #2a3159;
+  --color8: #c16beb;
+  --color-background: #b9e7e7;
+  --color-background2: #f6fcfc;
+
+  font-family: report, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  --font-2: freude, sans-serif;
+  --main-text-color: #cccdce;
 }
-.colors {
-  padding-top: 2rem;
+
+/* for fonts */
+/* .freude {
+  font-family: freude, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lato {
+  font-family: lato, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.report {
+  font-family: report, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+} */
+
+/* body style */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-font);
+}
+
+/* configurator container */
+.configuratorContainer {
+  background-color: white;
+  margin: 3vw;
+  margin-left: 6.5vw;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  padding-bottom: 3vw;
+  border-radius: 40px;
+  box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.15);
+  display: flex;
+  height: 630px;
+  width: 1320px;
+  overflow-x: hidden;
+}
+
+/* SVG section */
+.leftSide {
+  margin-left: 5rem;
+  margin-right: 8rem;
+  padding-top: 2vw;
+}
+
+#svgSection {
+  width: 280px;
+}
+
+/* configurator section */
+#configuratorSec {
+  background-color: #ebf9f9;
+  padding-left: 4rem;
+  padding-top: 2vw;
+  width: 790px;
+  height: 540px;
+  border-radius: 40px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.mainTitle h3 {
+  margin-bottom: 0.5rem;
+  font-size: 18px;
+}
+
+.mainTitle h1 {
+  color: var(--color-button);
+  font-size: 32px;
+  font-family: var(--font-2);
+}
+
+/* selected section */
+.selectedDiv {
+  margin-top: 8px;
+}
+
+.selectedTitle {
+  color: var(--color-font2);
+  font-family: var(--font-2);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.selectedFeatures {
+  background-color: white;
+  width: 500px;
+  height: 90px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 11px 1px rgba(197, 230, 230);
+}
+
+.selectedFeatures ul {
+  display: flex;
+  justify-content: space-around;
+  margin-left: -2.5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.featureSymbol {
+  margin-top: 8px;
+  width: 40px;
+  height: 40px;
+  background-color: darkseagreen;
+}
+
+/* features section */
+.featuresTitle {
+  color: var(--color-font2);
+  font-family: var(--font-2);
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+
+.strapDialDiv {
+  display: flex;
+  gap: 7.9rem;
+}
+
+.singleFeatureTitle {
+  margin-bottom: -2px;
+}
+
+.row1 {
+  display: flex;
+  gap: 8px;
+}
+
+.row2 {
+  display: flex;
+  gap: 8px;
+}
+
+.strapOption {
+  margin-top: 8px;
+  width: 40px;
+  height: 40px;
+  background-color: cornflowerblue;
+}
+
+.dialOption {
+  margin-top: 8px;
+  width: 40px;
+  height: 40px;
+  background-color: burlywood;
+  border-radius: 20px;
+}
+
+.colorsDiv {
+  display: flex;
+  gap: 10rem;
+  margin-top: 20px;
 }
 
 .colorSelector {
-  width: 80px;
-  height: 80px;
-  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-top: 7px;
+  border-radius: 20rem;
+}
+
+.buttons {
+  margin-top: 1.5rem;
+  margin-right: 5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button {
+  height: 35px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-family: report, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 18px;
+}
+
+.reset {
+  width: 100px;
+  background-color: #dadada;
+  transition: ease-in-out 0.1s;
+}
+
+.reset:hover {
+  background-color: #b4b4b4;
+  transition: ease-in-out 0.1s;
+}
+
+.save {
+  width: 120px;
+  background-color: #ffd858;
+  transition: ease-in-out 0.1s;
+}
+
+.save:hover {
+  width: 120px;
+  background-color: #eeb805;
+  transition: ease-in-out 0.1s;
 }
