@@ -10,3 +10,34 @@
   height: 80px;
   display: inline-block;
 }
+
+
+
+
+
+.strap {
+  position: absolute;
+  width: 108px;
+  top: 13px;
+  left: 131px;
+  height: auto;
+  pointer-events: none;
+}
+
+.dial {
+  position: absolute;
+  width: 95px;
+  top: 52px;
+  left: 139px;
+  height: auto;
+  pointer-events: none;
+}
+
+.option-strap {
+  width: 80px;
+  height: auto;
+}
+.option-dial {
+  width: 80px;
+  height: auto;
+}

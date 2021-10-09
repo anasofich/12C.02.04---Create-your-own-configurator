@@ -14,9 +14,11 @@ function init() {
   const keeper = document.querySelector("#keeper");
   //console.log(clockCase, buckle, keeper);
 
+  clockCase.style.filter = "brightness(1.1)"
+
   setColor(clockCase, "red");
   setColor(buckle, "red");
-  setColor(keeper, "blue");
+  setColor(keeper, "red");
 
   clockCase.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
