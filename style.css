@@ -140,7 +140,7 @@ h3 {
 .selectedFeatures {
   background-color: white;
   width: 500px;
-  height: 90px;
+  height: 94px;
   border-radius: 20px;
   box-shadow: 0px 1px 10px 2px rgb(121 194 194 / 30%);
 }
@@ -157,7 +157,7 @@ h3 {
   margin-top: 5px;
   width: 40px;
   height: 40px;
-  background-color: darkseagreen;
+  /* background-color: darkseagreen; */
   transition: 0.1s;
 }
 
