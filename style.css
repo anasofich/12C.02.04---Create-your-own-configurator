@@ -138,6 +138,12 @@ body {
   width: 40px;
   height: 40px;
   background-color: darkseagreen;
+  transition: 0.1s;
+}
+
+.featureSymbol:hover {
+  transform: scale(1.25);
+  transition: 0.1s;
 }
 
 /* features section */
@@ -173,14 +179,20 @@ body {
   width: 40px;
   height: 40px;
   background-color: cornflowerblue;
+  transition: 0.1s;
+}
+
+.strapOption img {
+  max-width: 100%;
 }
 
 .strapOption:hover {
-  box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.2);
+  transform: scale(1.25);
+  transition: 0.1s;
 }
 
 .strapOption.selected {
-  box-shadow: 2px 2px 11px 1px rgb(154, 235, 235);
+  box-shadow: 2px 2px 11px 1px rgb(29, 238, 238);
 }
 
 .dialOption {
@@ -189,14 +201,20 @@ body {
   height: 40px;
   background-color: burlywood;
   border-radius: 20px;
+  transition: 0.1s;
+}
+
+.dialOption img {
+  max-width: 100%;
 }
 
 .dialOption:hover {
-  box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.2);
+  transform: scale(1.25);
+  transition: 0.1s;
 }
 
 .dialOption.selected {
-  box-shadow: 2px 2px 11px 1px rgb(154, 235, 235);
+  box-shadow: 2px 2px 11px 1px rgb(29, 238, 238);
 }
 
 .colorsDiv {
@@ -210,10 +228,12 @@ body {
   height: 23px;
   margin-top: 7px;
   border-radius: 20rem;
+  transition: 0.1s;
 }
 
 .colorSelector:hover {
-  box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.2);
+  transform: scale(1.25);
+  transition: 0.1s;
 }
 
 .colorSelector.selected {
@@ -264,10 +284,6 @@ button {
   background-color: #eeb805;
   transition: ease-in-out 0.1s;
 }
-
-
-
-
 
 .strap {
   position: absolute;
