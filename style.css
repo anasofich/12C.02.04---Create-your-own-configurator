@@ -56,18 +56,19 @@ body {
   color: var(--color-font);
 }
 
+.hidden {
+  display: none;
+}
+
 /* configurator container */
 .configuratorContainer {
   background-color: white;
-  /* margin-left: 6.5vw; */
-  padding-left: 3vw;
-  /* padding-right: 3vw; */
-  /* padding-bottom: 3vw; */
+  padding-left: 7em;
   border-radius: 40px;
   box-shadow: 0px 5px 11px 0px rgb(0 0 0 / 15%);
   display: flex;
   height: 630px;
-  width: 1320px;
+  width: 1300px;
   overflow-x: hidden;
   margin-right: auto;
   margin-left: auto;
@@ -75,10 +76,13 @@ body {
 }
 
 /* SVG section */
+
 .leftSide {
-  margin-left: 1.5rem;
-  margin-right: 8rem;
-  padding-top: 2vw;
+  width: 35%;
+  /* margin-left: 4em; */
+  /* margin-left: 1.5rem; */
+  /* margin-right: 8rem; */
+  padding-top: 2em;
 }
 
 #svgSection {
@@ -90,10 +94,11 @@ body {
   background-color: #f1f8f8;
   padding-left: 4rem;
   padding-top: 2.5em;
-  width: 793px;
+  width: 786px;
   height: 508px;
   border-radius: 25px;
   margin-top: 1.3em;
+  margin-right: 1.3em;
 }
 
 h3 {
@@ -325,19 +330,19 @@ button {
 .strap {
   position: absolute;
   width: 86px;
-  top: 131px;
-  left: 363px;
+  z-index: 99;
   height: auto;
+  margin-top: 0.3em;
   pointer-events: none;
 }
 
 .dial {
   position: absolute;
-  width: 95px;
-  top: 52px;
-  left: 139px;
+  width: 81px;
   height: auto;
   pointer-events: none;
+  margin-left: 3px;
+  margin-top: 1.35em;
 }
 
 .option-strap {
