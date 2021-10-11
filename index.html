@@ -1,62 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Watch configurator</title>
+  </head>
+  <body>
+    <div class="configuratorContainer">
+      <div class="leftSide">
+        <!-- strap images -->
+        <img class="strap" src="./images/ready-to-implement/strap1.png" alt="strap1" />
+        <img class="strap" src="./images/ready-to-implement/strap2.png" alt="strap2" />
+        <img class="strap" src="./images/ready-to-implement/strap3.png" alt="strap3" />
+        <img class="strap" src="./images/ready-to-implement/strap4.png" alt="strap4" />
+        <img class="strap" src="./images/ready-to-implement/strap5.png" alt="strap5" />
+        <img class="strap" src="./images/ready-to-implement/strap6.png" alt="strap6" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Watch configurator</title>
-</head>
+        <!-- dial images -->
+        <img class="dial" src="./images/ready-to-implement/dial1.png" alt="dial1" />
+        <img class="dial" src="./images/ready-to-implement/dial2.png" alt="dial2" />
+        <img class="dial" src="./images/ready-to-implement/dial3.png" alt="dial3" />
+        <img class="dial" src="./images/ready-to-implement/dial4.png" alt="dial4" />
+        <img class="dial" src="./images/ready-to-implement/dial5.png" alt="dial5" />
+        <img class="dial" src="./images/ready-to-implement/dial6.png" alt="dial6" />
 
-<body>
-  <!-- strap images -->
-  <img class="strap" src="./images/ready-to-implement/strap1.png" alt="strap1">
-  <img class="strap" src="./images/ready-to-implement/strap2.png" alt="strap2">
-  <img class="strap" src="./images/ready-to-implement/strap3.png" alt="strap3">
-  <img class="strap" src="./images/ready-to-implement/strap4.png" alt="strap4">
-  <img class="strap" src="./images/ready-to-implement/strap5.png" alt="strap5">
-  <img class="strap" src="./images/ready-to-implement/strap6.png" alt="strap6">
+        <section id="svgSection"></section>
+      </div>
 
-  <!-- dial images -->
-  <img class="dial" src="./images/ready-to-implement/dial1.png" alt="dial1">
-  <img class="dial" src="./images/ready-to-implement/dial2.png" alt="dial2">
-  <img class="dial" src="./images/ready-to-implement/dial3.png" alt="dial3">
-  <img class="dial" src="./images/ready-to-implement/dial4.png" alt="dial4">
-  <img class="dial" src="./images/ready-to-implement/dial5.png" alt="dial5">
-  <img class="dial" src="./images/ready-to-implement/dial6.png" alt="dial6">
+      <div class="rightSide">
+        <section id="configuratorSec">
+          <div class="mainTitle">
+            <h3>CUSTOMIZE YOUR WATCH</h3>
+            <h1>Flick flack watch</h1>
+          </div>
 
+          <div class="selectedDiv">
+            <h2 class="selectedTitle">Selected</h2>
+            <div class="selectedFeatures">
+              <ul>
+                <div class="singleFeature">
+                  <div class="featureTitle">strap</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">dial</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">case</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">buckle</div>
+                  <div class="featureSymbol"></div>
+                </div>
+                <div class="singleFeature">
+                  <div class="featureTitle">keeper</div>
+                  <div class="featureSymbol"></div>
+                </div>
+              </ul>
+            </div>
+          </div>
 
-  <section id="svgSection"></section>
+          <div class="featuresSec">
+            <h2 class="featuresTitle">Available features</h2>
 
-  <div class="colors">
-    <div class="colorSelector c1" style="background-color: #f6cd00"></div>
-    <div class="colorSelector c2" style="background-color: #ee7629"></div>
-    <div class="colorSelector c3" style="background-color: #f77c9b"></div>
-    <div class="colorSelector c4" style="background-color: #b51931"></div>
-    <div class="colorSelector c5" style="background-color: #072777"></div>
-    <div class="colorSelector c6" style="background-color: #066318"></div>
-  </div>
+            <div class="strapDialDiv">
+              <div class="strapDiv">
+                <h3 class="singleFeatureTitle">STRAP</h3>
+                <div class="row1">
+                  <div class="strapOption selected so1" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap1-square.png" alt="option-strap1" /></div>
+                  <div class="strapOption so2" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap2-square.png" alt="option-strap2" /></div>
+                  <div class="strapOption so3" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap3-square.png" alt="option-strap3" /></div>
+                </div>
+                <div class="row2">
+                  <div class="strapOption so4" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap4-square.png" alt="option-strap4" /></div>
+                  <div class="strapOption so5" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap5-square.png" alt="option-strap5" /></div>
+                  <div class="strapOption so6" data-feature="strap"><img class="option-strap" src="./images/ready-to-implement/strap6-square.png" alt="option-strap6" /></div>
+                </div>
+              </div>
 
-  <div class="straps">
-    <img class="option-strap" src="./images/ready-to-implement/strap1-square.png" alt="option-strap1">
-    <img class="option-strap" src="./images/ready-to-implement/strap2-square.png" alt="option-strap2">
-    <img class="option-strap" src="./images/ready-to-implement/strap3-square.png" alt="option-strap3">
-    <img class="option-strap" src="./images/ready-to-implement/strap4-square.png" alt="option-strap4">
-    <img class="option-strap" src="./images/ready-to-implement/strap5-square.png" alt="option-strap5">
-    <img class="option-strap" src="./images/ready-to-implement/strap6-square.png" alt="option-strap6">
-  </div>
+              <div class="dialDiv">
+                <h3 class="singleFeatureTitle">DIAL</h3>
+                <div class="row1">
+                  <div class="dialOption do1" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial1-square.png" alt="option-dial1" /></div>
+                  <div class="dialOption selected do2" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial2-square.png" alt="option-dial2" /></div>
+                  <div class="dialOption do3" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial3-square.png" alt="option-dial3" /></div>
+                </div>
+                <div class="row2">
+                  <div class="dialOption do4" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial4-square.png" alt="option-dial4" /></div>
+                  <div class="dialOption do5" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial5-square.png" alt="option-dial5" /></div>
+                  <div class="dialOption do6" data-feature="dial"><img class="option-dial" src="./images/ready-to-implement/dial6-square.png" alt="option-dial6" /></div>
+                </div>
+              </div>
+            </div>
 
-  <div class="dials">
-    <img class="option-dial" src="./images/ready-to-implement/dial1-square.png" alt="option-dial1">
-    <img class="option-dial" src="./images/ready-to-implement/dial2-square.png" alt="option-dial2">
-    <img class="option-dial" src="./images/ready-to-implement/dial3-square.png" alt="option-dial3">
-    <img class="option-dial" src="./images/ready-to-implement/dial4-square.png" alt="option-dial4">
-    <img class="option-dial" src="./images/ready-to-implement/dial5-square.png" alt="option-dial5">
-    <img class="option-dial" src="./images/ready-to-implement/dial6-square.png" alt="option-dial6">
-  </div>
+            <div class="colorsDiv">
+              <div class="caseDiv">
+                <h3 class="singleFeatureTitle">CASE</h3>
+                <div class="row1">
+                  <div class="colorSelector c1" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
 
-  <script src="script.js"></script>
-</body>
+              <div class="buckleDiv">
+                <h3 class="singleFeatureTitle">BUCKLE</h3>
+                <div class="row1">
+                  <div class="colorSelector c1" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
 
+              <div class="keeperDiv">
+                <h3 class="singleFeatureTitle">KEEPER</h3>
+                <div class="row1">
+                  <div class="colorSelector c1 selected" style="background-color: #00bc9e"></div>
+                  <div class="colorSelector c2" style="background-color: #f98225"></div>
+                  <div class="colorSelector c3" style="background-color: #ee35af"></div>
+                  <div class="colorSelector c4" style="background-color: #312f30"></div>
+                </div>
+                <div class="row2">
+                  <div class="colorSelector c5" style="background-color: #0b33c2"></div>
+                  <div class="colorSelector c6" style="background-color: #ffd5f4"></div>
+                  <div class="colorSelector c7" style="background-color: #2a3159"></div>
+                  <div class="colorSelector c7" style="background-color: #c16beb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="buttons">
+          <button class="reset">RESET</button>
+          <button class="save">SAVE</button>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
