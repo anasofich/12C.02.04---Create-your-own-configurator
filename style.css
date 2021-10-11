@@ -229,6 +229,7 @@ body {
   margin-top: 7px;
   border-radius: 20rem;
   transition: 0.1s;
+  border: 1px solid #cecece;
 }
 
 .colorSelector:hover {
