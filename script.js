@@ -45,6 +45,7 @@ function toggleOptionStrap(event) {
   selectedStrap = feature
   document.querySelector(`#option-${feature}`).classList.add("selected")
 
+  showStrapOrDialInSelectedElements(target, feature)
   changeToChosenStrapOrDial(feature, previouslySelected)
 }
 
@@ -63,15 +64,47 @@ function toggleOptionDial(event) {
   selectedDial = feature
   document.querySelector(`#option-${feature}`).classList.add("selected")
 
+  showStrapOrDialInSelectedElements(target, feature)
   changeToChosenStrapOrDial(feature, previouslySelected)
 }
 
 function changeToChosenStrapOrDial(feature, previous) {
-  console.log(feature)
-  console.log(previous)
+  // console.log(feature)
+  // console.log(previous)
+
+  // when user choses for the first time
   if (previous !== "") {
     document.getElementById(previous).classList.add("hidden")
   }
   document.getElementById(feature).classList.remove("hidden")
+}
+
+function showStrapOrDialInSelectedElements(target, feature) {
+  console.log(target)
+  console.log(feature)
+  // grab the cild element (img) od selected option
+  const imgElement = target.childNodes[0]
+  // create copy
+  const copyImgElement = imgElement.cloneNode(true)
+  // removes all the classes for an element
+  copyImgElement.className = ""
+
+  copyImgElement.className = "featureSymbol"
+  
+
+  // appending element to "Selected elements" container
+  if (feature.includes(`strap`)) {
+    let container = document.getElementById("selectedOption-strap")
+    container.appendChild(copyImgElement)
+  }
+  if (feature.includes(`dial`)) {
+    let container = document.getElementById("selectedOption-dial")
+    container.appendChild(copyImgElement)
+  }
+
+  console.log(previousStrap)
+  console.log(previousDial)
+
+
 }
 
