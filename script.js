@@ -36,6 +36,7 @@ function toggleOptionStrap(event) {
   const feature = target.dataset.feature
   let previouslySelected = ''
 
+  // toggle view on option buttons
   // delete class "selected" for previously selected option
   if (selectedStrap !== "") {
     previouslySelected = selectedStrap
@@ -58,6 +59,7 @@ function toggleOptionDial(event) {
   const feature = target.dataset.feature
   let previouslySelected = ''
 
+  // toggle view on option buttons
   // delete class "selected" for previously selected option
   if (selectedDial !== "") {
     previouslySelected = selectedDial
@@ -90,25 +92,42 @@ function showStrapOrDialInSelectedElements(target, feature) {
   copyImgElement.className = ""
   copyImgElement.className = "featureSymbol"
   
+
   // appending element to "Selected elements" container
+
   if (feature.includes(`strap`)) {
     let container = document.getElementById("selectedOption-strap")
     // remove previous selection
     if (previousStrap !== "") {
       let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].remove()
+      previousSelection[0].classList.add("opacityToZero")
+
+      //when animation is complete, remove element from DOM
+      previousSelection[0].addEventListener("animationend", function() {
+        previousSelection[0].remove()
+    })
+     
     }
     container.appendChild(copyImgElement)
   }
+
   if (feature.includes(`dial`)) {
     let container = document.getElementById("selectedOption-dial")
     // remove previous selection
     if (previousDial !== "") {
       let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].remove()
+      previousSelection[0].classList.add("opacityToZero")
+      
+      //when animation is complete, remove element from DOM
+      previousSelection[0].addEventListener("animationend", function() {
+        previousSelection[0].remove()
+    })
+      
     }
     container.appendChild(copyImgElement)
   }
 
 }
+
+
 

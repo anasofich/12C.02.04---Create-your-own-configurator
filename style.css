@@ -368,3 +368,62 @@ button {
   width: 80px;
   height: auto;
 }
+
+
+/* Animation classes */
+
+.animate-feature-in {
+  /* Animation for adding a feature */
+  animation-name: animate-feature-in_kf;
+  animation-iteration-count: 1;
+  animation-duration: 2s;
+}
+
+@keyframes animate-feature-in_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy)) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+
+.animate-feature-out {
+  /* Animation for removing a feature */
+  animation-name: animate-feature-out_kf;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-direction: reverse;
+}
+
+@keyframes animate-feature-out_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy)) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+
+
+.opacityToZero {
+  animation-name: opacity-ani;
+  animation-iteration-count: 1;
+  animation-duration: 0.5s;
+}
+@keyframes opacity-ani {
+  0% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+
+  100% {
+    transform: scale(0.75);
+    opacity: 0%;
+  }
+}
+
