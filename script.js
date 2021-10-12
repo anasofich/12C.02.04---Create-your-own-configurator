@@ -41,12 +41,15 @@ function toggleOptionStrap(event) {
     previouslySelected = selectedStrap
     document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
   }
-  // add class "selected" to currently selected item
+  
   selectedStrap = feature
+  // add class "selected" to currently selected item
   document.querySelector(`#option-${feature}`).classList.add("selected")
 
   showStrapOrDialInSelectedElements(target, feature)
   changeToChosenStrapOrDial(feature, previouslySelected)
+
+  previousStrap = selectedStrap
 }
 
 function toggleOptionDial(event) {
@@ -66,12 +69,11 @@ function toggleOptionDial(event) {
 
   showStrapOrDialInSelectedElements(target, feature)
   changeToChosenStrapOrDial(feature, previouslySelected)
+
+  previousDial = selectedDial
 }
 
 function changeToChosenStrapOrDial(feature, previous) {
-  // console.log(feature)
-  // console.log(previous)
-
   // when user choses for the first time
   if (previous !== "") {
     document.getElementById(previous).classList.add("hidden")
@@ -80,31 +82,33 @@ function changeToChosenStrapOrDial(feature, previous) {
 }
 
 function showStrapOrDialInSelectedElements(target, feature) {
-  console.log(target)
-  console.log(feature)
-  // grab the cild element (img) od selected option
+  // grab the child element (img) od selected option
   const imgElement = target.childNodes[0]
   // create copy
   const copyImgElement = imgElement.cloneNode(true)
   // removes all the classes for an element
   copyImgElement.className = ""
-
   copyImgElement.className = "featureSymbol"
   
-
   // appending element to "Selected elements" container
   if (feature.includes(`strap`)) {
     let container = document.getElementById("selectedOption-strap")
+    // remove previous selection
+    if (previousStrap !== "") {
+      let previousSelection = container.getElementsByTagName('img')
+      previousSelection[0].remove()
+    }
     container.appendChild(copyImgElement)
   }
   if (feature.includes(`dial`)) {
     let container = document.getElementById("selectedOption-dial")
+    // remove previous selection
+    if (previousDial !== "") {
+      let previousSelection = container.getElementsByTagName('img')
+      previousSelection[0].remove()
+    }
     container.appendChild(copyImgElement)
   }
-
-  console.log(previousStrap)
-  console.log(previousDial)
-
 
 }
 
