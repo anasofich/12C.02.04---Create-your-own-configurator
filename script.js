@@ -22,7 +22,7 @@ function init() {
   const clockCase = document.querySelector("#case");
   clockCase.style.filter = "brightness(1.1)";
 
-  setStrapAndDialListeners ()
+  setStrapAndDialListeners()
 }
 
 function setStrapAndDialListeners () {
@@ -33,33 +33,45 @@ function setStrapAndDialListeners () {
 function toggleOptionStrap(event) {
   // target is a container for an element
   const target = event.currentTarget
-  // console.log("TARGET ", target)
   const feature = target.dataset.feature
-  // console.log("FEATURE ", feature)
+  let previouslySelected = ''
 
   // delete class "selected" for previously selected option
   if (selectedStrap !== "") {
-    const previouslySelected = selectedStrap
+    previouslySelected = selectedStrap
     document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
   }
   // add class "selected" to currently selected item
   selectedStrap = feature
   document.querySelector(`#option-${feature}`).classList.add("selected")
+
+  changeToChosenStrapOrDial(feature, previouslySelected)
 }
 
 function toggleOptionDial(event) {
   // target is a container for an element
   const target = event.currentTarget
-  // console.log("TARGET ", target)
   const feature = target.dataset.feature
-  // console.log("FEATURE ", feature)
+  let previouslySelected = ''
 
   // delete class "selected" for previously selected option
   if (selectedDial !== "") {
-    const previouslySelected = selectedDial
+    previouslySelected = selectedDial
     document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
   }
   // add class "selected" to currently selected item
   selectedDial = feature
   document.querySelector(`#option-${feature}`).classList.add("selected")
+
+  changeToChosenStrapOrDial(feature, previouslySelected)
 }
+
+function changeToChosenStrapOrDial(feature, previous) {
+  console.log(feature)
+  console.log(previous)
+  if (previous !== "") {
+    document.getElementById(previous).classList.add("hidden")
+  }
+  document.getElementById(feature).classList.remove("hidden")
+}
+
