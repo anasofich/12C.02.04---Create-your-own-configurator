@@ -220,6 +220,7 @@ h3 {
   background-color: cornflowerblue;
   transition: 0.1s;
   cursor: pointer;
+  opacity: 70%;
 }
 
 .strapOption img {
@@ -235,6 +236,7 @@ h3 {
   border: 1.5px solid #66bbbb;
   /* box-shadow: 0px 0px 10px 1px rgb(121 194 194); */
   box-shadow: 0px 0px 10px 1px #89d0d0;
+  opacity: 100%;
 }
 
 .dialOption {
@@ -245,6 +247,7 @@ h3 {
   border-radius: 20px;
   transition: 0.1s;
   cursor: pointer;
+  opacity: 70%;
 }
 
 .dialOption img {
@@ -260,6 +263,7 @@ h3 {
   border: 2.5px solid #66bbbb;
   /* box-shadow: 0px 0px 10px 1px rgb(121 194 194); */
   box-shadow: 0px 0px 10px 1px #89d0d0;
+  opacity: 100%;
 }
 
 .colorsDiv {
