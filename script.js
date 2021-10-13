@@ -47,18 +47,17 @@ function colorsSelector() {
   //adding event listeners to selected paths to change color
   clockCase.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
-    //console.log(selectedCase);
-    //console.log(document.querySelector(".colorSelector.colorSelected"));
-    //console.log(currentColor);
     setSelectedCaseColor();
   });
 
   buckle.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
+    setSelectedBuckleColor();
   });
 
   keeper.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
+    setSelectedKeeperColor();
   });
 
   //reading current color from selected color
@@ -91,15 +90,13 @@ function colorsSelector() {
     document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
   }
 
-  function setSelectedCaseColor(event) {
+  function setSelectedCaseColor() {
     console.log("setSelectedCaseColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
-    //console.log(selectedCase);
-    //console.log(document.querySelector(".colorSelector.colorSelected"));
     if (colorFeatures.clockCase === false) {
       console.log("Case color has been chosen");
 
@@ -115,10 +112,10 @@ function colorsSelector() {
 
       //creating FLIP animation
       const firstFrame = selectedColorPosition.getBoundingClientRect();
-      console.log(firstFrame);
+      //console.log(firstFrame);
 
       const lastFrame = selectedCaseColor.getBoundingClientRect();
-      console.log(lastFrame);
+      //console.log(lastFrame);
 
       const deltaX = firstFrame.left - lastFrame.left;
       const deltaY = firstFrame.top - lastFrame.top;
@@ -178,18 +175,169 @@ function colorsSelector() {
     }
   }
 
-  //setting selected color in "selected" section
-  /* function setSelectedColor() {
-    //console.log(clockCase.style.fill);
-    //console.log(buckle.style.fill);
-    //console.log(keeper.style.fill);
+  function setSelectedBuckleColor() {
+    console.log("setSelectedBuckleColor()");
+    let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
+    //console.log(selectedColorPosition);
+    let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
+    //console.log(selectedColor);
 
-    let selectedCase = document.querySelector(".selectedFeatures .selectedCase");
-    let selectedBuckle = document.querySelector(".selectedFeatures .selectedBuckle");
-    let selectedKeeper = document.querySelector(".selectedFeatures .selectedKeeper");
+    if (colorFeatures.buckle === false) {
+      console.log("adding new color");
 
-    selectedCase.style.backgroundColor = clockCase.style.fill;
-    selectedBuckle.style.backgroundColor = buckle.style.fill;
-    selectedKeeper.style.backgroundColor = keeper.style.fill;
-  } */
+      //toggling to true
+      colorFeatures.buckle = true;
+
+      //creating element to move to selected list
+      const selectedBuckleColor = document.createElement("div");
+      selectedBuckleColor.classList.add("featureSymbol2");
+      selectedBuckleColor.style.backgroundColor = selectedColor;
+
+      document.querySelector(".selectedBuckle").append(selectedBuckleColor);
+
+      //creating FLIP animation
+      const firstFrame = selectedColorPosition.getBoundingClientRect();
+      //console.log(firstFrame);
+
+      const lastFrame = selectedBuckleColor.getBoundingClientRect();
+      //console.log(lastFrame);
+
+      const deltaX = firstFrame.left - lastFrame.left;
+      const deltaY = firstFrame.top - lastFrame.top;
+      const deltaWidth = firstFrame.width / lastFrame.width;
+      const deltaHeight = firstFrame.height / lastFrame.height;
+
+      selectedBuckleColor.animate(
+        [
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+             scale(${deltaWidth}, ${deltaHeight})`,
+          },
+          { transformOrigin: "top left", transform: "none" },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
+    } else {
+      console.log("removing color");
+
+      colorFeatures.buckle = false;
+
+      const removingColor = document.querySelector(".selectedBuckle div");
+
+      const firstFrame = removingColor.getBoundingClientRect();
+
+      const lastFrame = selectedColorPosition.getBoundingClientRect();
+
+      const deltaX = lastFrame.left - firstFrame.left;
+      const deltaY = lastFrame.top - firstFrame.top;
+      const deltaWidth = lastFrame.width / firstFrame.width;
+      const deltaHeight = lastFrame.height / firstFrame.height;
+
+      removingColor.animate(
+        [
+          { transformOrigin: "top left", transform: "none" },
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+          scale(${deltaWidth}, ${deltaHeight})`,
+          },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
+
+      Promise.all(
+        removingColor.getAnimations().map(function (animation) {
+          return animation.finished;
+        })
+      ).then(function () {
+        return removingColor.remove();
+      });
+
+      setSelectedBuckleColor();
+    }
+  }
+
+  function setSelectedKeeperColor() {
+    console.log("setSelectedBuckleColor()");
+    let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
+    //console.log(selectedColorPosition);
+    let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
+    //console.log(selectedColor);
+
+    if (colorFeatures.keeper === false) {
+      console.log("adding new color");
+
+      //toggling to true
+      colorFeatures.keeper = true;
+
+      //creating element to move to selected list
+      const selectedKeeperColor = document.createElement("div");
+      selectedKeeperColor.classList.add("featureSymbol2");
+      selectedKeeperColor.style.backgroundColor = selectedColor;
+
+      document.querySelector(".selectedKeeper").append(selectedKeeperColor);
+
+      //creating FLIP animation
+      const firstFrame = selectedColorPosition.getBoundingClientRect();
+      //console.log(firstFrame);
+
+      const lastFrame = selectedKeeperColor.getBoundingClientRect();
+      //console.log(lastFrame);
+
+      const deltaX = firstFrame.left - lastFrame.left;
+      const deltaY = firstFrame.top - lastFrame.top;
+      const deltaWidth = firstFrame.width / lastFrame.width;
+      const deltaHeight = firstFrame.height / lastFrame.height;
+
+      selectedKeeperColor.animate(
+        [
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+             scale(${deltaWidth}, ${deltaHeight})`,
+          },
+          { transformOrigin: "top left", transform: "none" },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
+    } else {
+      console.log("removing color");
+
+      colorFeatures.keeper = false;
+
+      const removingColor = document.querySelector(".selectedKeeper div");
+
+      const firstFrame = removingColor.getBoundingClientRect();
+
+      const lastFrame = selectedColorPosition.getBoundingClientRect();
+
+      const deltaX = lastFrame.left - firstFrame.left;
+      const deltaY = lastFrame.top - firstFrame.top;
+      const deltaWidth = lastFrame.width / firstFrame.width;
+      const deltaHeight = lastFrame.height / firstFrame.height;
+
+      removingColor.animate(
+        [
+          { transformOrigin: "top left", transform: "none" },
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+          scale(${deltaWidth}, ${deltaHeight})`,
+          },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
+
+      Promise.all(
+        removingColor.getAnimations().map(function (animation) {
+          return animation.finished;
+        })
+      ).then(function () {
+        return removingColor.remove();
+      });
+
+      setSelectedKeeperColor();
+    }
+  }
 }
