@@ -1,12 +1,12 @@
 @import url("https://use.typekit.net/kpr6mjz.css");
 @import url("https://use.typekit.net/moe7ljh.css");
 @import url("https://use.typekit.net/lmt8vks.css");
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 
 :root {
   --color-button: #ffcc26;
   --color-font: #bebebe;
-  --color-font2: #f98225 ;
+  --color-font2: #f98225;
   --color1: #f8f8f8;
   --color2: #f6cd00;
   --color3: #ee7629;
@@ -89,6 +89,20 @@ body {
   width: 280px;
 }
 
+.cls-1:hover {
+  stroke: #131111;
+  stroke-width: 6;
+  filter: blur(2px);
+  stroke-dasharray: 30;
+  animation: dash 15s linear;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+
 /* configurator section */
 #configuratorSec {
   background-color: #f1f8f8;
@@ -102,13 +116,11 @@ body {
 }
 
 h3 {
-  font-family: 'Lato', sans-serif;
   margin-bottom: 0.5rem;
   font-size: 1em;
 }
 
 .mainTitle h3 {
-  font-family: 'Lato', sans-serif;
   margin-bottom: 0.5rem;
   font-size: 16px;
 }
@@ -158,7 +170,7 @@ h3 {
   width: 40px;
   height: 40px;
   /* background-color: darkseagreen; */
-  /* transition: 0.1s; */
+  transition: 0.1s;
 }
 
 .featureSymbol2 {
@@ -168,10 +180,23 @@ h3 {
   border-radius: 50px;
 }
 
-/* .featureSymbol:hover {
+.selectedCase {
+  background-color: white;
+}
+
+.selectedBuckle {
+  background-color: white;
+}
+
+.selectedKeeper {
+  background-color: white;
+}
+
+.featureSymbol:hover,
+.featureSymbol2:hover {
   transform: scale(1.2);
   transition: 0.1s;
-} */
+}
 
 /* features section */
 .featuresTitle {
@@ -198,7 +223,6 @@ h3 {
 }
 
 .featureTitle {
-  font-family: 'Lato', sans-serif;
   font-size: 1em;
 }
 
@@ -282,14 +306,7 @@ h3 {
   transition: 0.1s;
 }
 
-.colorSelector.selected {
-  width: 25px;
-  height: 25px;
-  border: solid 3px white;
-  box-shadow: 0px 5px 11px 0px rgba(0, 0, 0, 0.3);
-}
-
-.colorSelected {
+.colorSelector.colorSelected {
   border: 2px solid #66bbbb;
   box-shadow: 0px 0px 10px 1px #89d0d0;
 }
