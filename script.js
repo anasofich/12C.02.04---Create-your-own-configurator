@@ -50,7 +50,7 @@ function colorsSelector() {
     //console.log(selectedCase);
     //console.log(document.querySelector(".colorSelector.colorSelected"));
     //console.log(currentColor);
-    setSelectedCaseColor();
+    //setSelectedCaseColor();
   });
 
   buckle.addEventListener("click", (event) => {
@@ -82,7 +82,7 @@ function colorsSelector() {
       })
     );
 
-    //setSelectedColor();
+    setSelectedColor();
   }
 
   //removing selected class from colors
@@ -91,7 +91,7 @@ function colorsSelector() {
     document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
   }
 
-  function setSelectedCaseColor(event) {
+  /* function setSelectedCaseColor(event) {
     console.log("setSelectedCaseColor()");
 
     //console.log(selectedCase);
@@ -102,9 +102,9 @@ function colorsSelector() {
       console.log("something is wrong");
     }
   }
-
+ */
   //setting selected color in "selected" section
-  /* function setSelectedColor() {
+  function setSelectedColor() {
     //console.log(clockCase.style.fill);
     //console.log(buckle.style.fill);
     //console.log(keeper.style.fill);
@@ -116,5 +116,5 @@ function colorsSelector() {
     selectedCase.style.backgroundColor = clockCase.style.fill;
     selectedBuckle.style.backgroundColor = buckle.style.fill;
     selectedKeeper.style.backgroundColor = keeper.style.fill;
-  } */
+  }
 }
