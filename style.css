@@ -227,10 +227,10 @@ h3 {
   max-width: 100%;
 }
 
-.strapOption:hover {
+/* .strapOption:hover {
   transform: scale(1.25);
   transition: 0.1s;
-}
+} */
 
 .strapOption.selected {
   border: 1.5px solid #66bbbb;
@@ -376,16 +376,17 @@ button {
   /* Animation for adding a feature */
   animation-name: animate-feature-in_kf;
   animation-iteration-count: 1;
-  animation-duration: 2s;
+  animation-duration: 0.8s;
+  /* animation-timing-function: ease; */
 }
 
 @keyframes animate-feature-in_kf {
   0% {
-    transform: translate(var(--diffx), var(--diffy)) scale(0);
+    transform: translate(var(--diffx), var(--diffy));
   }
 
   100% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0);
   }
 }
 
@@ -413,7 +414,7 @@ button {
 .opacityToZero {
   animation-name: opacity-ani;
   animation-iteration-count: 1;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
 }
 @keyframes opacity-ani {
   0% {
@@ -426,4 +427,3 @@ button {
     opacity: 0%;
   }
 }
-

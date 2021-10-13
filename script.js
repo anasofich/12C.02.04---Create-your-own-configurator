@@ -91,28 +91,31 @@ function showStrapOrDialInSelectedElements(target, feature) {
   // removes all the classes for an element
   copyImgElement.className = ""
   copyImgElement.className = "featureSymbol"
-  
 
-  // appending element to "Selected elements" container
+  let container
+  
+  // deleting previously selected element
 
   if (feature.includes(`strap`)) {
-    let container = document.getElementById("selectedOption-strap")
+    container = document.getElementById("selectedOption-strap")
     // remove previous selection
     if (previousStrap !== "") {
       let previousSelection = container.getElementsByTagName('img')
       previousSelection[0].classList.add("opacityToZero")
 
-      //when animation is complete, remove element from DOM
+      // when animation is complete, remove element from DOM
       previousSelection[0].addEventListener("animationend", function() {
         previousSelection[0].remove()
     })
      
     }
-    container.appendChild(copyImgElement)
+     // animation for new element and appending it to the selected elements container
+     container = container.children[1]
+     setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
   }
 
   if (feature.includes(`dial`)) {
-    let container = document.getElementById("selectedOption-dial")
+    container = document.getElementById("selectedOption-dial")
     // remove previous selection
     if (previousDial !== "") {
       let previousSelection = container.getElementsByTagName('img')
@@ -120,7 +123,7 @@ function showStrapOrDialInSelectedElements(target, feature) {
       
       //when animation is complete, remove element from DOM
       previousSelection[0].addEventListener("animationend", function() {
-        previousSelection[0].remove()
+      previousSelection[0].remove()
     })
       
     }
@@ -130,4 +133,24 @@ function showStrapOrDialInSelectedElements(target, feature) {
 }
 
 
+ // TO DO - NOT WORKING PROPERLY
+ function animateElementIn(start, end, element) {
 
+  //Create new featureElement and add it to the selected elements container
+  end.appendChild(element)
+  
+  //FLIP- "animate-feature-in"
+  const startPosition = start.getBoundingClientRect()
+  const endPosition = element.getBoundingClientRect()
+
+  const diffx = startPosition.x - endPosition.x + "px"
+  const diffy = startPosition.y - endPosition.y + "px"
+
+  element.style.setProperty("--diffx", diffx)
+  element.style.setProperty("--diffy", diffy)
+
+
+  //Animation feature in
+  element.classList.add("animate-feature-in") 
+
+}
