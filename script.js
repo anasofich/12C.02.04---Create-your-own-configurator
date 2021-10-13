@@ -50,7 +50,7 @@ function colorsSelector() {
     //console.log(selectedCase);
     //console.log(document.querySelector(".colorSelector.colorSelected"));
     //console.log(currentColor);
-    //setSelectedCaseColor();
+    setSelectedCaseColor();
   });
 
   buckle.addEventListener("click", (event) => {
@@ -82,7 +82,7 @@ function colorsSelector() {
       })
     );
 
-    setSelectedColor();
+    //setSelectedColor();
   }
 
   //removing selected class from colors
@@ -91,20 +91,95 @@ function colorsSelector() {
     document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
   }
 
-  /* function setSelectedCaseColor(event) {
+  function setSelectedCaseColor(event) {
     console.log("setSelectedCaseColor()");
+    let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
+    //console.log(selectedColorPosition);
+    let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
+    //console.log(selectedColor);
 
     //console.log(selectedCase);
     //console.log(document.querySelector(".colorSelector.colorSelected"));
     if (colorFeatures.clockCase === false) {
-      console.log("Case color has been changed");
+      console.log("Case color has been chosen");
+
+      //toggling to true
+      colorFeatures.clockCase = true;
+
+      //creating element to move to selected list
+      const selectedCaseColor = document.createElement("div");
+      selectedCaseColor.classList.add("featureSymbol2");
+      selectedCaseColor.style.backgroundColor = selectedColor;
+
+      document.querySelector(".selectedCase").append(selectedCaseColor);
+
+      //creating FLIP animation
+      const firstFrame = selectedColorPosition.getBoundingClientRect();
+      console.log(firstFrame);
+
+      const lastFrame = selectedCaseColor.getBoundingClientRect();
+      console.log(lastFrame);
+
+      const deltaX = firstFrame.left - lastFrame.left;
+      const deltaY = firstFrame.top - lastFrame.top;
+      const deltaWidth = firstFrame.width / lastFrame.width;
+      const deltaHeight = firstFrame.height / lastFrame.height;
+
+      selectedCaseColor.animate(
+        [
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+             scale(${deltaWidth}, ${deltaHeight})`,
+          },
+          { transformOrigin: "top left", transform: "none" },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
     } else {
-      console.log("something is wrong");
+      console.log("Case color has been changed");
+
+      colorFeatures.clockCase = false;
+
+      const removingColor = document.querySelector(".selectedCase div");
+
+      const firstFrame = removingColor.getBoundingClientRect();
+
+      const lastFrame = selectedColorPosition.getBoundingClientRect();
+
+      const deltaX = lastFrame.left - firstFrame.left;
+      const deltaY = lastFrame.top - firstFrame.top;
+      const deltaWidth = lastFrame.width / firstFrame.width;
+      const deltaHeight = lastFrame.height / firstFrame.height;
+
+      removingColor.animate(
+        [
+          { transformOrigin: "top left", transform: "none" },
+          {
+            transformOrigin: "top left",
+            transform: `translate(${deltaX}px, ${deltaY}px)
+          scale(${deltaWidth}, ${deltaHeight})`,
+          },
+        ],
+        { duration: 500, easing: "ease-in-out" }
+      );
+
+      Promise.all(
+        removingColor.getAnimations().map(function (animation) {
+          return animation.finished;
+        })
+      ).then(function () {
+        //setSelectedCaseColor(); uncomment if want to add after element has been removed so it doesn't move
+
+        return removingColor.remove();
+      });
+
+      setSelectedCaseColor(); //new color will get to position before the other has been removed so it moves
     }
   }
- */
+
   //setting selected color in "selected" section
-  function setSelectedColor() {
+  /* function setSelectedColor() {
     //console.log(clockCase.style.fill);
     //console.log(buckle.style.fill);
     //console.log(keeper.style.fill);
@@ -116,5 +191,5 @@ function colorsSelector() {
     selectedCase.style.backgroundColor = clockCase.style.fill;
     selectedBuckle.style.backgroundColor = buckle.style.fill;
     selectedKeeper.style.backgroundColor = keeper.style.fill;
-  }
+  } */
 }

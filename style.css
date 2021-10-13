@@ -180,7 +180,7 @@ h3 {
   border-radius: 50px;
 }
 
-.selectedCase {
+/* .selectedCase {
   background-color: white;
 }
 
@@ -190,7 +190,7 @@ h3 {
 
 .selectedKeeper {
   background-color: white;
-}
+} */
 
 .featureSymbol:hover,
 .featureSymbol2:hover {
