@@ -180,24 +180,6 @@ h3 {
   border-radius: 50px;
 }
 
-/* .selectedCase {
-  background-color: white;
-}
-
-.selectedBuckle {
-  background-color: white;
-}
-
-.selectedKeeper {
-  background-color: white;
-} */
-
-.featureSymbol:hover,
-.featureSymbol2:hover {
-  transform: scale(1.2);
-  transition: 0.1s;
-}
-
 /* features section */
 .featuresTitle {
   color: var(--color-font2);

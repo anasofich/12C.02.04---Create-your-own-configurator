@@ -2,9 +2,6 @@
 
 let selectedStrap = "";
 let selectedDial = "";
-/* let selectedCase = "";
-let selectedBuckle = "";
-let selectedKeeper = ""; */
 
 let currentColor;
 
@@ -158,7 +155,7 @@ function colorsSelector() {
           scale(${deltaWidth}, ${deltaHeight})`,
           },
         ],
-        { duration: 500, easing: "ease-in-out" }
+        { duration: 300, easing: "ease-in-out" }
       );
 
       Promise.all(
@@ -243,7 +240,7 @@ function colorsSelector() {
           scale(${deltaWidth}, ${deltaHeight})`,
           },
         ],
-        { duration: 500, easing: "ease-in-out" }
+        { duration: 300, easing: "ease-in-out" }
       );
 
       Promise.all(
@@ -326,7 +323,7 @@ function colorsSelector() {
           scale(${deltaWidth}, ${deltaHeight})`,
           },
         ],
-        { duration: 500, easing: "ease-in-out" }
+        { duration: 300, easing: "ease-in-out" }
       );
 
       Promise.all(
