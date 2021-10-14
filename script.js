@@ -3,6 +3,9 @@
 let selectedStrap = "";
 let selectedDial = "";
 
+let previousStrap = ""
+let previousDial = ""
+
 let currentColor;
 
 const colorFeatures = {
@@ -11,10 +14,7 @@ const colorFeatures = {
   keeper: false,
 };
 
-let previousStrap = ""
-let previousDial = ""
-
-let firstTimeSelectingColor = false
+let colorMode = false
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -51,7 +51,6 @@ function colorsSelector() {
   const clockCase = document.querySelector("#case .caseColor");
   const buckle = document.querySelector("#buckle .buckleColor");
   const keeper = document.querySelector("#keeper .keeperColor");
-  //console.log("Case:", clockCase, "buckle:", buckle, "keeper:", keeper);
 
   //variables for colors in selected section
   let selectedCase = document.querySelector(".selectedFeatures .selectedCase");
@@ -65,59 +64,30 @@ function colorsSelector() {
   setColor(buckle, "white");
   setColor(keeper, "white");
 
+  //Add event listeners to clock
+  setupHoverListeners();
+  setupClockClickListeners();
+
   //adding event listeners to selected paths to change color
   clockCase.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedCaseColor();
 
-    // CHANGE ANNA
-    document.querySelector("#instructionImage").classList.add("hidden")
-
-    const clockCase = document.querySelector("#case");
-    const buckle = document.querySelector("#buckle");
-    const keeper = document.querySelector("#keeper");
-
-    clockCase.classList.remove("showElementWhichCanBeClicked")
-    buckle.classList.remove("showElementWhichCanBeClicked")
-    keeper.classList.remove("showElementWhichCanBeClicked")
-
-    firstTimeSelectingColor = true
+    hideInstructionAndSelection()
   });
 
   buckle.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedBuckleColor();
 
-    // CHANGE ANNA
-    document.querySelector("#instructionImage").classList.add("hidden")
-
-    const clockCase = document.querySelector("#case");
-    const buckle = document.querySelector("#buckle");
-    const keeper = document.querySelector("#keeper");
-
-    clockCase.classList.remove("showElementWhichCanBeClicked")
-    buckle.classList.remove("showElementWhichCanBeClicked")
-    keeper.classList.remove("showElementWhichCanBeClicked")
-
-    firstTimeSelectingColor = true
+    hideInstructionAndSelection()
   });
 
   keeper.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedKeeperColor();
 
-    // CHANGE ANNA
-    document.querySelector("#instructionImage").classList.add("hidden")
-
-    const clockCase = document.querySelector("#case");
-    const buckle = document.querySelector("#buckle");
-    const keeper = document.querySelector("#keeper");
-
-    clockCase.classList.remove("showElementWhichCanBeClicked")
-    buckle.classList.remove("showElementWhichCanBeClicked")
-    keeper.classList.remove("showElementWhichCanBeClicked")
-
-    firstTimeSelectingColor = true
+    hideInstructionAndSelection()
   });
 
   //reading current color from selected color
@@ -129,58 +99,8 @@ function colorsSelector() {
 
   //setting the selected color to the selected path
   function setColor(element, colorString) {
-    document.querySelectorAll(".colorSelector").forEach((element) => {});
+    // document.querySelectorAll(".colorSelector").forEach((element) => {});
     element.style.fill = colorString;
-
-    document.querySelectorAll(".colorSelector").forEach((element) =>
-      element.addEventListener("click", () => {
-        removeSelectedClass();
-        element.classList.add("colorSelected");
-        console.log(element)
-        console.log("ENTERING")
-
-        // CHANGES ANNA
-        if (firstTimeSelectingColor == false) {
-          // console.log("ENTERING function")
-          const clockCase = document.querySelector("#case");
-          const buckle = document.querySelector("#buckle");
-          const keeper = document.querySelector("#keeper");
-  
-          clockCase.classList.add("showElementWhichCanBeClicked")
-          buckle.classList.add("showElementWhichCanBeClicked")
-          keeper.classList.add("showElementWhichCanBeClicked")
-
-          document.querySelector("#instructionImage").classList.remove("hidden")
-
-          // listeners on hovering case/buckle/keeper
-          clockCase.addEventListener("mouseover", function() {
-            clockCase.classList.remove("showElementWhichCanBeClicked")
-          })
-          buckle.addEventListener("mouseover", function() {
-            buckle.classList.remove("showElementWhichCanBeClicked")
-          })
-          keeper.addEventListener("mouseover", function() {
-            keeper.classList.remove("showElementWhichCanBeClicked")
-          })
-
-          // listeners on mouse out case/buckle/keeper
-          clockCase.addEventListener("mouseout", function() {
-            clockCase.classList.add("showElementWhichCanBeClicked")
-          })
-          buckle.addEventListener("mouseover", function() {
-            buckle.classList.add("showElementWhichCanBeClicked")
-          })
-          keeper.addEventListener("mouseover", function() {
-            keeper.classList.add("showElementWhichCanBeClicked")
-          })
-        }
-
-        if (firstTimeSelectingColor == true) {
-          console.log("SOMETHING")
-        }
-
-      })
-    );
     //setSelectedColor();
   }
 
@@ -440,7 +360,77 @@ function colorsSelector() {
       setSelectedKeeperColor();
     }
   }
+
+  function setupClockClickListeners() {
+    document.querySelectorAll(".colorSelector").forEach((element) =>
+      element.addEventListener("click", () => {
+        colorMode = true
+        removeSelectedClass();
+        element.classList.add("colorSelected");
+
+        const clockCase = document.querySelector("#case");
+        const buckle = document.querySelector("#buckle");
+        const keeper = document.querySelector("#keeper");
+
+        clockCase.classList.add("showElementWhichCanBeClicked")
+        buckle.classList.add("showElementWhichCanBeClicked")
+        keeper.classList.add("showElementWhichCanBeClicked")
+
+        document.querySelector("#instructionImage").classList.remove("hidden")
+      })
+    );
+  }
+
+  function setupHoverListeners() {
+    const clockCase = document.querySelector("#case");
+    const buckle = document.querySelector("#buckle");
+    const keeper = document.querySelector("#keeper");
+
+    // listeners on hovering case/buckle/keeper
+    clockCase.addEventListener("mouseover", function() {
+      clockCase.classList.remove("showElementWhichCanBeClicked")
+    })
+    buckle.addEventListener("mouseover", function() {
+      buckle.classList.remove("showElementWhichCanBeClicked")
+    })
+    keeper.addEventListener("mouseover", function() {
+      keeper.classList.remove("showElementWhichCanBeClicked")
+    })
+
+    // listeners on mouse out case/buckle/keeper
+    clockCase.addEventListener("mouseout", function() {
+      if(colorMode) {
+        clockCase.classList.add("showElementWhichCanBeClicked")
+      }
+    })
+    buckle.addEventListener("mouseover", function() {
+      if(colorMode) {
+        buckle.classList.add("showElementWhichCanBeClicked")
+      }
+    })
+    keeper.addEventListener("mouseover", function() {
+      if(colorMode) {
+        keeper.classList.add("showElementWhichCanBeClicked")
+      }
+    })
+  }
 }
+
+  function hideInstructionAndSelection() {
+  document.querySelector("#instructionImage").classList.add("hidden")
+
+  const clockCase = document.querySelector("#case");
+  const buckle = document.querySelector("#buckle");
+  const keeper = document.querySelector("#keeper");
+
+  clockCase.classList.remove("showElementWhichCanBeClicked")
+  buckle.classList.remove("showElementWhichCanBeClicked")
+  keeper.classList.remove("showElementWhichCanBeClicked")
+
+  colorMode = false
+}
+
+
 
 //functions for buttons
 function resetSettings() {
@@ -479,12 +469,9 @@ function saveSettings() {
 
 
 
+//functions for straps and dials
 
-
-
-
-
-function setStrapAndDialListeners () {
+function setStrapAndDialListeners() {
   document.querySelectorAll(".strapOption").forEach(option => option.addEventListener("click", toggleOptionStrap))
   document.querySelectorAll(".dialOption").forEach(option => option.addEventListener("click", toggleOptionDial))
 }
@@ -562,14 +549,6 @@ function showStrapOrDialInSelectedElements(target, feature) {
       let previousSelection = container.getElementsByTagName('img')
 
       animateElementOut(target, container, previousSelection[0])
-
-
-    // TO DELETE AFTERWARDS
-    // previousSelection[0].classList.add("opacityToZero")
-      // when animation is complete, remove element from DOM
-    //   previousSelection[0].addEventListener("animationend", function() {
-    //     previousSelection[0].remove()
-    // })
     }
      // animation for new element and appending it to the selected elements container
      container = container.children[1]
@@ -583,13 +562,6 @@ function showStrapOrDialInSelectedElements(target, feature) {
       let previousSelection = container.getElementsByTagName('img')
 
       animateElementOut(target, container, previousSelection[0])
-
-    // TO DELETE AFTERWARDS
-      // previousSelection[0].classList.add("opacityToZero")
-      //when animation is complete, remove element from DOM
-    //   previousSelection[0].addEventListener("animationend", function() {
-    //     previousSelection[0].remove()
-    // }) 
     }
     // animation for new element and appending it to the selected elements container
     container = container.children[1]
@@ -597,7 +569,6 @@ function showStrapOrDialInSelectedElements(target, feature) {
   }
 
 }
-
 
  function animateElementIn(start, end, element) {
 
@@ -620,7 +591,6 @@ function showStrapOrDialInSelectedElements(target, feature) {
 
 }
 
-// TO DO
 function animateElementOut(start, end, element) {
 
   element.classList.remove("animate-feature-in") 
@@ -628,9 +598,6 @@ function animateElementOut(start, end, element) {
   console.log("START ", start)
   console.log("END ", end)
   console.log("ELEMENT ", element)
-
-  //Remove featureElement from the list in the bottom
-  // const selectedFeature = document.querySelector(`#selected [data-feature="${feature}"]`)
   
   //FLIP- "animate-feature-out"
   const endPosition = element.getBoundingClientRect()
