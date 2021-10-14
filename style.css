@@ -361,7 +361,7 @@ button {
   animation-name: animate-feature-in_kf;
   animation-iteration-count: 1;
   animation-duration: 0.8s;
-  /* animation-timing-function: ease; */
+  animation-timing-function: ease;
 }
 
 @keyframes animate-feature-in_kf {
@@ -378,7 +378,7 @@ button {
   /* Animation for removing a feature */
   animation-name: animate-feature-out_kf;
   animation-iteration-count: 1;
-  animation-duration: 1s;
+  animation-duration: 0.3s;
   animation-direction: reverse;
 }
 
@@ -403,8 +403,10 @@ button {
     opacity: 100%;
   }
 
-  100% {
-    transform: scale(0.75);
+  75% {
+    transform: scale(0.75)
     opacity: 0%;
+  }
+  100% {
   }
 }

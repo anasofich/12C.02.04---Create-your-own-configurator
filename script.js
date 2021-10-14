@@ -475,13 +475,16 @@ function showStrapOrDialInSelectedElements(target, feature) {
     // remove previous selection
     if (previousStrap !== "") {
       let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].classList.add("opacityToZero")
 
+      animateElementOut(target, container, previousSelection[0])
+
+
+    // TO DELETE AFTERWARDS
+    // previousSelection[0].classList.add("opacityToZero")
       // when animation is complete, remove element from DOM
-      previousSelection[0].addEventListener("animationend", function() {
-        previousSelection[0].remove()
-    })
-     
+    //   previousSelection[0].addEventListener("animationend", function() {
+    //     previousSelection[0].remove()
+    // })
     }
      // animation for new element and appending it to the selected elements container
      container = container.children[1]
@@ -493,13 +496,15 @@ function showStrapOrDialInSelectedElements(target, feature) {
     // remove previous selection
     if (previousDial !== "") {
       let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].classList.add("opacityToZero")
-      
+
+      animateElementOut(target, container, previousSelection[0])
+
+    // TO DELETE AFTERWARDS
+      // previousSelection[0].classList.add("opacityToZero")
       //when animation is complete, remove element from DOM
-      previousSelection[0].addEventListener("animationend", function() {
-        previousSelection[0].remove()
-    })
-      
+    //   previousSelection[0].addEventListener("animationend", function() {
+    //     previousSelection[0].remove()
+    // }) 
     }
     // animation for new element and appending it to the selected elements container
     container = container.children[1]
@@ -527,5 +532,39 @@ function showStrapOrDialInSelectedElements(target, feature) {
 
   //Animation feature in
   element.classList.add("animate-feature-in") 
+
+}
+
+// TO DO
+function animateElementOut(start, end, element) {
+
+  element.classList.remove("animate-feature-in") 
+
+  console.log("START ", start)
+  console.log("END ", end)
+  console.log("ELEMENT ", element)
+
+  //Remove featureElement from the list in the bottom
+  // const selectedFeature = document.querySelector(`#selected [data-feature="${feature}"]`)
+  
+  //FLIP- "animate-feature-out"
+  const endPosition = element.getBoundingClientRect()
+  const startPosition = start.getBoundingClientRect()
+
+  const diffx = startPosition.x - endPosition.x + "px"
+  const diffy = startPosition.y - endPosition.y + "px"
+
+  element.style.setProperty("--diffx", diffx)
+  element.style.setProperty("--diffy", diffy)
+
+  element.offsetHeight
+
+  //Animation feature out
+  element.classList.add("animate-feature-out") 
+
+  //when animation is complete, remove element from DOM
+  element.addEventListener("animationend", function() {
+    element.remove()
+  }) 
 
 }
