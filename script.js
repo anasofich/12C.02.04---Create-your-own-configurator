@@ -123,17 +123,18 @@ function showStrapOrDialInSelectedElements(target, feature) {
       
       //when animation is complete, remove element from DOM
       previousSelection[0].addEventListener("animationend", function() {
-      previousSelection[0].remove()
+        previousSelection[0].remove()
     })
       
     }
-    container.appendChild(copyImgElement)
+    // animation for new element and appending it to the selected elements container
+    container = container.children[1]
+    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
   }
 
 }
 
 
- // TO DO - NOT WORKING PROPERLY
  function animateElementIn(start, end, element) {
 
   //Create new featureElement and add it to the selected elements container
