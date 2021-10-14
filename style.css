@@ -90,18 +90,24 @@ body {
 }
 
 .cls-1:hover {
+  stroke: #89d0d0;
+  stroke-width: 15;
+  filter: blur(8px);
+}
+
+/* .cls-1:hover {
   stroke: #131111;
   stroke-width: 6;
   filter: blur(2px);
   stroke-dasharray: 30;
   animation: dash 15s linear;
-}
+} */
 
-@keyframes dash {
+/* @keyframes dash {
   to {
     stroke-dashoffset: 1000;
   }
-}
+} */
 
 /* configurator section */
 #configuratorSec {
