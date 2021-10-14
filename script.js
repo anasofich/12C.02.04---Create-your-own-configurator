@@ -22,7 +22,6 @@ async function start() {
   document.querySelector("section").innerHTML = mySvgData;
   registerButtons();
   colorsSelector();
-
   init();
 }
 
@@ -524,5 +523,4 @@ function resetSettings() {
 function saveSettings() {
   console.log("saveSettings()");
   //console.log(document.querySelector("#case .caseColor").style.fill);
-  localStorage.setItem("clockCase", document.querySelector("#case .caseColor").style.fill);
 }
