@@ -156,10 +156,6 @@ function animateElementIn(start, end, element) {
 function animateElementOut(start, end, element) {
 
   element.classList.remove("animate-feature-in") 
-
-  // console.log("START ", start)
-  // console.log("END ", end)
-  // console.log("ELEMENT ", element)
   
   //FLIP- "animate-feature-out"
   const endPosition = element.getBoundingClientRect()
@@ -185,7 +181,6 @@ function animateElementOut(start, end, element) {
 
 //color selector functions
 function colorsSelector() {
-  //console.log("colorsSelector()");
 
   //making variables for svg paths that will change color: case, buckle, keeper
   const clockCase = document.querySelector("#case .caseColor");
@@ -239,26 +234,19 @@ function colorsSelector() {
 
   //setting the selected color to the selected path
   function setColor(element, colorString) {
-    // document.querySelectorAll(".colorSelector").forEach((element) => {});
     element.style.fill = colorString;
-    //setSelectedColor();
   }
 
   //removing selected class from colors
   function removeSelectedClass() {
-    //console.log("removeSelectedClass");
     document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
   }
 
   function setSelectedCaseColor() {
-    //console.log("setSelectedCaseColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
-    //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
-    //console.log(selectedColor);
 
     if (colorFeatures.clockCase === false) {
-      //console.log("Case color has been chosen");
 
       //toggling to true
       colorFeatures.clockCase = true;
@@ -272,10 +260,8 @@ function colorsSelector() {
 
       //creating FLIP animation
       const firstFrame = selectedColorPosition.getBoundingClientRect();
-      //console.log(firstFrame);
 
       const lastFrame = selectedCaseColor.getBoundingClientRect();
-      //console.log(lastFrame);
 
       const deltaX = firstFrame.left - lastFrame.left;
       const deltaY = firstFrame.top - lastFrame.top;
@@ -293,9 +279,8 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-    } else {
-      //console.log("Case color has been changed");
 
+    } else {
       colorFeatures.clockCase = false;
 
       const removingColor = document.querySelector(".selectedCase div");
@@ -326,8 +311,6 @@ function colorsSelector() {
           return animation.finished;
         })
       ).then(function () {
-        //setSelectedCaseColor(); uncomment if want to add after element has been removed so it doesn't move
-
         return removingColor.remove();
       });
 
@@ -336,14 +319,10 @@ function colorsSelector() {
   }
 
   function setSelectedBuckleColor() {
-    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
-    //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
-    //console.log(selectedColor);
 
     if (colorFeatures.buckle === false) {
-      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.buckle = true;
@@ -357,10 +336,8 @@ function colorsSelector() {
 
       //creating FLIP animation
       const firstFrame = selectedColorPosition.getBoundingClientRect();
-      //console.log(firstFrame);
 
       const lastFrame = selectedBuckleColor.getBoundingClientRect();
-      //console.log(lastFrame);
 
       const deltaX = firstFrame.left - lastFrame.left;
       const deltaY = firstFrame.top - lastFrame.top;
@@ -378,9 +355,8 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-    } else {
-      //console.log("removing color");
 
+    } else {
       colorFeatures.buckle = false;
 
       const removingColor = document.querySelector(".selectedBuckle div");
@@ -419,14 +395,10 @@ function colorsSelector() {
   }
 
   function setSelectedKeeperColor() {
-    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
-    //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
-    //console.log(selectedColor);
 
     if (colorFeatures.keeper === false) {
-      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.keeper = true;
@@ -440,10 +412,8 @@ function colorsSelector() {
 
       //creating FLIP animation
       const firstFrame = selectedColorPosition.getBoundingClientRect();
-      //console.log(firstFrame);
 
       const lastFrame = selectedKeeperColor.getBoundingClientRect();
-      //console.log(lastFrame);
 
       const deltaX = firstFrame.left - lastFrame.left;
       const deltaY = firstFrame.top - lastFrame.top;
@@ -461,9 +431,9 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-    } else {
-      //console.log("removing color");
-
+    } 
+    
+    else {
       colorFeatures.keeper = false;
 
       const removingColor = document.querySelector(".selectedKeeper div");
@@ -582,7 +552,6 @@ function registerButtons() {
 }
 
 function resetSettings() {
-  // console.log("resetSettings()");
 
   //reset current strap and dial
   document.querySelectorAll(".strap").forEach((element) => element.classList.add("hidden"));
@@ -623,7 +592,5 @@ function resetSettings() {
 }
 
 function saveSettings() {
-  // console.log("saveSettings()");
-  //console.log(document.querySelector("#case .caseColor").style.fill);
   localStorage.setItem("clockCase", document.querySelector("#case .caseColor").style.fill);
 }
