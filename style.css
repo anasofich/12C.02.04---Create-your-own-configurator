@@ -25,26 +25,6 @@
   --main-text-color: #cccdce;
 }
 
-/* for fonts */
-/* .freude {
-  font-family: freude, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.lato {
-  font-family: lato, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.report {
-  font-family: report, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-} */
-
-/* body style */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -175,8 +155,6 @@ h3 {
   margin-top: 5px;
   width: 40px;
   height: 40px;
-  /* background-color: darkseagreen; */
-  transition: 0.1s;
 }
 
 .featureSymbol2 {
@@ -232,31 +210,27 @@ h3 {
   background-color: cornflowerblue;
   transition: 0.1s;
   cursor: pointer;
+  opacity: 70%;
 }
 
 .strapOption img {
   max-width: 100%;
 }
 
-.strapOption:hover {
-  transform: scale(1.25);
-  transition: 0.1s;
-}
-
 .strapOption.selected {
   border: 1.5px solid #66bbbb;
-  /* box-shadow: 0px 0px 10px 1px rgb(121 194 194); */
   box-shadow: 0px 0px 10px 1px #89d0d0;
+  opacity: 100%;
 }
 
 .dialOption {
   margin-top: 8px;
   width: 40px;
   height: 40px;
-  /* background-color: burlywood; */
   border-radius: 20px;
   transition: 0.1s;
   cursor: pointer;
+  opacity: 70%;
 }
 
 .dialOption img {
@@ -270,8 +244,8 @@ h3 {
 
 .dialOption.selected {
   border: 2.5px solid #66bbbb;
-  /* box-shadow: 0px 0px 10px 1px rgb(121 194 194); */
   box-shadow: 0px 0px 10px 1px #89d0d0;
+  opacity: 100%;
 }
 
 .colorsDiv {
@@ -368,4 +342,68 @@ button {
 .option-dial {
   width: 80px;
   height: auto;
+}
+
+#selectedOption-strap , #selectedOption-dial {
+  width: 40px;
+}
+  
+
+
+
+/* Animation classes */
+
+.animate-feature-in {
+  /* Animation for adding a feature */
+  animation-name: animate-feature-in_kf;
+  animation-iteration-count: 1;
+  animation-duration: 0.8s;
+  /* animation-timing-function: ease; */
+}
+
+@keyframes animate-feature-in_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy));
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+
+.animate-feature-out {
+  /* Animation for removing a feature */
+  animation-name: animate-feature-out_kf;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+  animation-direction: reverse;
+}
+
+@keyframes animate-feature-out_kf {
+  0% {
+    transform: translate(var(--diffx), var(--diffy)) scale(0);
+  }
+
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+
+.opacityToZero {
+  animation-name: opacity-ani;
+  animation-iteration-count: 1;
+  animation-duration: 0.2s;
+}
+@keyframes opacity-ani {
+  0% {
+    transform: scale(1);
+    opacity: 100%;
+  }
+
+  100% {
+    transform: scale(0.75);
+    opacity: 0%;
+  }
 }
