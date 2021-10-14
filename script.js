@@ -27,10 +27,6 @@ function registerButtons() {
 
   //save button
   document.querySelector(".buttonsContainer .save").addEventListener("click", saveSettings);
-
-  if (localStorage.getItem("selectedSettings")) {
-    getSelectedSettings();
-  }
 }
 
 function colorsSelector() {
@@ -379,4 +375,6 @@ function resetSettings() {
 
 function saveSettings() {
   console.log("saveSettings()");
+  //console.log(document.querySelector("#case .caseColor").style.fill);
+  localStorage.setItem("clockCase", document.querySelector("#case .caseColor").style.fill);
 }
