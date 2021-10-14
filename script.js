@@ -11,8 +11,8 @@ const colorFeatures = {
   keeper: false,
 };
 
-let previousStrap = ""
-let previousDial = ""
+let previousStrap = "";
+let previousDial = "";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -23,16 +23,15 @@ async function start() {
   registerButtons();
   colorsSelector();
 
-  init()
+  init();
 }
 
 function init() {
   const clockCase = document.querySelector("#case");
   clockCase.style.filter = "brightness(1.1)";
 
-  setStrapAndDialListeners()
+  setStrapAndDialListeners();
 }
-
 
 function registerButtons() {
   //reset button
@@ -42,6 +41,7 @@ function registerButtons() {
   document.querySelector(".buttonsContainer .save").addEventListener("click", saveSettings);
 }
 
+//COLOR SELECTOR FUNCTIONS
 function colorsSelector() {
   console.log("colorsSelector()");
 
@@ -361,9 +361,138 @@ function colorsSelector() {
   }
 }
 
+//STRAP AND DIAL FUNCTIONS
+function setStrapAndDialListeners() {
+  document.querySelectorAll(".strapOption").forEach((option) => option.addEventListener("click", toggleOptionStrap));
+  document.querySelectorAll(".dialOption").forEach((option) => option.addEventListener("click", toggleOptionDial));
+}
+
+function toggleOptionStrap(event) {
+  // target is a container for an element
+  const target = event.currentTarget;
+  const feature = target.dataset.feature;
+  let previouslySelected = "";
+
+  // toggle view on option buttons
+  // delete class "selected" for previously selected option
+  if (selectedStrap !== "") {
+    previouslySelected = selectedStrap;
+    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected");
+  }
+
+  selectedStrap = feature;
+  // add class "selected" to currently selected item
+  document.querySelector(`#option-${feature}`).classList.add("selected");
+
+  showStrapOrDialInSelectedElements(target, feature);
+  changeToChosenStrapOrDial(feature, previouslySelected);
+
+  previousStrap = selectedStrap;
+}
+
+function toggleOptionDial(event) {
+  // target is a container for an element
+  const target = event.currentTarget;
+  const feature = target.dataset.feature;
+  let previouslySelected = "";
+
+  // toggle view on option buttons
+  // delete class "selected" for previously selected option
+  if (selectedDial !== "") {
+    previouslySelected = selectedDial;
+    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected");
+  }
+  // add class "selected" to currently selected item
+  selectedDial = feature;
+  document.querySelector(`#option-${feature}`).classList.add("selected");
+
+  showStrapOrDialInSelectedElements(target, feature);
+  changeToChosenStrapOrDial(feature, previouslySelected);
+
+  previousDial = selectedDial;
+}
+
+function changeToChosenStrapOrDial(feature, previous) {
+  // when user choses for the first time
+  if (previous !== "") {
+    document.getElementById(previous).classList.add("hidden");
+  }
+  document.getElementById(feature).classList.remove("hidden");
+}
+
+function showStrapOrDialInSelectedElements(target, feature) {
+  // grab the child element (img) od selected option
+  const imgElement = target.childNodes[0];
+  // create copy
+  const copyImgElement = imgElement.cloneNode(true);
+  // removes all the classes for an element
+  copyImgElement.className = "";
+  copyImgElement.className = "featureSymbol";
+
+  let container;
+
+  // deleting previously selected element
+
+  if (feature.includes(`strap`)) {
+    container = document.getElementById("selectedOption-strap");
+    // remove previous selection
+    if (previousStrap !== "") {
+      let previousSelection = container.getElementsByTagName("img");
+      previousSelection[0].classList.add("opacityToZero");
+
+      // when animation is complete, remove element from DOM
+      previousSelection[0].addEventListener("animationend", function () {
+        previousSelection[0].remove();
+      });
+    }
+    // animation for new element and appending it to the selected elements container
+    container = container.children[1];
+    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200);
+  }
+
+  if (feature.includes(`dial`)) {
+    container = document.getElementById("selectedOption-dial");
+    // remove previous selection
+    if (previousDial !== "") {
+      let previousSelection = container.getElementsByTagName("img");
+      previousSelection[0].classList.add("opacityToZero");
+
+      //when animation is complete, remove element from DOM
+      previousSelection[0].addEventListener("animationend", function () {
+        previousSelection[0].remove();
+      });
+    }
+    // animation for new element and appending it to the selected elements container
+    container = container.children[1];
+    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200);
+  }
+}
+
+function animateElementIn(start, end, element) {
+  //Create new featureElement and add it to the selected elements container
+  end.appendChild(element);
+
+  //FLIP- "animate-feature-in"
+  const startPosition = start.getBoundingClientRect();
+  const endPosition = element.getBoundingClientRect();
+
+  const diffx = startPosition.x - endPosition.x + "px";
+  const diffy = startPosition.y - endPosition.y + "px";
+
+  element.style.setProperty("--diffx", diffx);
+  element.style.setProperty("--diffy", diffy);
+
+  //Animation feature in
+  element.classList.add("animate-feature-in");
+}
+
 //functions for buttons
 function resetSettings() {
   console.log("resetSettings()");
+
+  //reset current strap and dial
+  document.querySelectorAll(".strap").forEach((element) => element.classList.add("hidden"));
+  document.querySelectorAll(".dial").forEach((element) => element.classList.add("hidden"));
 
   //reset current colors
   const clockCase = document.querySelector("#case .caseColor");
@@ -375,6 +504,7 @@ function resetSettings() {
   keeper.style.fill = "#ffffff";
 
   //reset selected section
+  document.querySelectorAll(".featureSymbol").forEach((element) => element.remove());
   document.querySelectorAll(".featureSymbol2").forEach((element) => element.remove());
 
   //setting color selection to false
@@ -384,148 +514,15 @@ function resetSettings() {
 
   //removing selected class
   document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
+  document.querySelectorAll(".strapOption.selected").forEach((element) => element.classList.remove("selected"));
+
+  document.querySelectorAll(".dialOption.selected").forEach((element) => element.classList.remove("selected"));
+  previousStrap = "";
+  previousDial = "";
 }
 
 function saveSettings() {
   console.log("saveSettings()");
   //console.log(document.querySelector("#case .caseColor").style.fill);
   localStorage.setItem("clockCase", document.querySelector("#case .caseColor").style.fill);
-}
-
-
-
-
-
-
-
-
-function setStrapAndDialListeners () {
-  document.querySelectorAll(".strapOption").forEach(option => option.addEventListener("click", toggleOptionStrap))
-  document.querySelectorAll(".dialOption").forEach(option => option.addEventListener("click", toggleOptionDial))
-}
-
-function toggleOptionStrap(event) {
-  // target is a container for an element
-  const target = event.currentTarget
-  const feature = target.dataset.feature
-  let previouslySelected = ''
-
-  // toggle view on option buttons
-  // delete class "selected" for previously selected option
-  if (selectedStrap !== "") {
-    previouslySelected = selectedStrap
-    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
-  }
-  
-  selectedStrap = feature
-  // add class "selected" to currently selected item
-  document.querySelector(`#option-${feature}`).classList.add("selected")
-
-  showStrapOrDialInSelectedElements(target, feature)
-  changeToChosenStrapOrDial(feature, previouslySelected)
-
-  previousStrap = selectedStrap
-}
-
-function toggleOptionDial(event) {
-  // target is a container for an element
-  const target = event.currentTarget
-  const feature = target.dataset.feature
-  let previouslySelected = ''
-
-  // toggle view on option buttons
-  // delete class "selected" for previously selected option
-  if (selectedDial !== "") {
-    previouslySelected = selectedDial
-    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
-  }
-  // add class "selected" to currently selected item
-  selectedDial = feature
-  document.querySelector(`#option-${feature}`).classList.add("selected")
-
-  showStrapOrDialInSelectedElements(target, feature)
-  changeToChosenStrapOrDial(feature, previouslySelected)
-
-  previousDial = selectedDial
-}
-
-function changeToChosenStrapOrDial(feature, previous) {
-  // when user choses for the first time
-  if (previous !== "") {
-    document.getElementById(previous).classList.add("hidden")
-  }
-  document.getElementById(feature).classList.remove("hidden")
-}
-
-function showStrapOrDialInSelectedElements(target, feature) {
-  // grab the child element (img) od selected option
-  const imgElement = target.childNodes[0]
-  // create copy
-  const copyImgElement = imgElement.cloneNode(true)
-  // removes all the classes for an element
-  copyImgElement.className = ""
-  copyImgElement.className = "featureSymbol"
-
-  let container
-  
-  // deleting previously selected element
-
-  if (feature.includes(`strap`)) {
-    container = document.getElementById("selectedOption-strap")
-    // remove previous selection
-    if (previousStrap !== "") {
-      let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].classList.add("opacityToZero")
-
-      // when animation is complete, remove element from DOM
-      previousSelection[0].addEventListener("animationend", function() {
-        previousSelection[0].remove()
-    })
-     
-    }
-     // animation for new element and appending it to the selected elements container
-     container = container.children[1]
-     setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
-  }
-
-  if (feature.includes(`dial`)) {
-    container = document.getElementById("selectedOption-dial")
-    // remove previous selection
-    if (previousDial !== "") {
-      let previousSelection = container.getElementsByTagName('img')
-      previousSelection[0].classList.add("opacityToZero")
-      
-      //when animation is complete, remove element from DOM
-      previousSelection[0].addEventListener("animationend", function() {
-        previousSelection[0].remove()
-    })
-      
-    }
-    // animation for new element and appending it to the selected elements container
-    container = container.children[1]
-    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
-  }
-
-}
-
-
- function animateElementIn(start, end, element) {
-
-  //Create new featureElement and add it to the selected elements container
-  end.appendChild(element)
-  
-  //FLIP- "animate-feature-in"
-  const startPosition = start.getBoundingClientRect()
-  const endPosition = element.getBoundingClientRect()
-
-  const diffx = startPosition.x - endPosition.x + "px"
-  const diffy = startPosition.y - endPosition.y + "px"
-
-  element.style.setProperty("--diffx", diffx)
-  element.style.setProperty("--diffy", diffy)
-
-
-  //Animation feature in
-  element.classList.add("animate-feature-in") 
-
 }
