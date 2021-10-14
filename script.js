@@ -43,7 +43,7 @@ function registerButtons() {
 
 //COLOR SELECTOR FUNCTIONS
 function colorsSelector() {
-  console.log("colorsSelector()");
+  //console.log("colorsSelector()");
 
   //making variables for svg paths that will change color: case, buckle, keeper
   const clockCase = document.querySelector("#case .caseColor");
@@ -110,14 +110,14 @@ function colorsSelector() {
   }
 
   function setSelectedCaseColor() {
-    console.log("setSelectedCaseColor()");
+    //console.log("setSelectedCaseColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.clockCase === false) {
-      console.log("Case color has been chosen");
+      //console.log("Case color has been chosen");
 
       //toggling to true
       colorFeatures.clockCase = true;
@@ -153,7 +153,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("Case color has been changed");
+      //console.log("Case color has been changed");
 
       colorFeatures.clockCase = false;
 
@@ -195,14 +195,14 @@ function colorsSelector() {
   }
 
   function setSelectedBuckleColor() {
-    console.log("setSelectedBuckleColor()");
+    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.buckle === false) {
-      console.log("adding new color");
+      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.buckle = true;
@@ -238,7 +238,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("removing color");
+      //console.log("removing color");
 
       colorFeatures.buckle = false;
 
@@ -278,14 +278,14 @@ function colorsSelector() {
   }
 
   function setSelectedKeeperColor() {
-    console.log("setSelectedBuckleColor()");
+    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.keeper === false) {
-      console.log("adding new color");
+      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.keeper = true;
@@ -321,7 +321,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("removing color");
+      //console.log("removing color");
 
       colorFeatures.keeper = false;
 
@@ -488,7 +488,7 @@ function animateElementIn(start, end, element) {
 
 //functions for buttons
 function resetSettings() {
-  console.log("resetSettings()");
+  //console.log("resetSettings()");
 
   //reset current strap and dial
   document.querySelectorAll(".strap").forEach((element) => element.classList.add("hidden"));
