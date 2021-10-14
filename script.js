@@ -14,6 +14,8 @@ const colorFeatures = {
 let previousStrap = ""
 let previousDial = ""
 
+let firstTimeSelectingColor = false
+
 document.addEventListener("DOMContentLoaded", start);
 
 async function start() {
@@ -67,16 +69,55 @@ function colorsSelector() {
   clockCase.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedCaseColor();
+
+    // CHANGE ANNA
+    document.querySelector("#instructionImage").classList.add("hidden")
+
+    const clockCase = document.querySelector("#case");
+    const buckle = document.querySelector("#buckle");
+    const keeper = document.querySelector("#keeper");
+
+    clockCase.classList.remove("showElementWhichCanBeClicked")
+    buckle.classList.remove("showElementWhichCanBeClicked")
+    keeper.classList.remove("showElementWhichCanBeClicked")
+
+    firstTimeSelectingColor = true
   });
 
   buckle.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedBuckleColor();
+
+    // CHANGE ANNA
+    document.querySelector("#instructionImage").classList.add("hidden")
+
+    const clockCase = document.querySelector("#case");
+    const buckle = document.querySelector("#buckle");
+    const keeper = document.querySelector("#keeper");
+
+    clockCase.classList.remove("showElementWhichCanBeClicked")
+    buckle.classList.remove("showElementWhichCanBeClicked")
+    keeper.classList.remove("showElementWhichCanBeClicked")
+
+    firstTimeSelectingColor = true
   });
 
   keeper.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedKeeperColor();
+
+    // CHANGE ANNA
+    document.querySelector("#instructionImage").classList.add("hidden")
+
+    const clockCase = document.querySelector("#case");
+    const buckle = document.querySelector("#buckle");
+    const keeper = document.querySelector("#keeper");
+
+    clockCase.classList.remove("showElementWhichCanBeClicked")
+    buckle.classList.remove("showElementWhichCanBeClicked")
+    keeper.classList.remove("showElementWhichCanBeClicked")
+
+    firstTimeSelectingColor = true
   });
 
   //reading current color from selected color
@@ -88,18 +129,58 @@ function colorsSelector() {
 
   //setting the selected color to the selected path
   function setColor(element, colorString) {
-    //console.log(element, colorString);
     document.querySelectorAll(".colorSelector").forEach((element) => {});
     element.style.fill = colorString;
-    //console.log(element);
 
     document.querySelectorAll(".colorSelector").forEach((element) =>
       element.addEventListener("click", () => {
         removeSelectedClass();
         element.classList.add("colorSelected");
+        console.log(element)
+        console.log("ENTERING")
+
+        // CHANGES ANNA
+        if (firstTimeSelectingColor == false) {
+          // console.log("ENTERING function")
+          const clockCase = document.querySelector("#case");
+          const buckle = document.querySelector("#buckle");
+          const keeper = document.querySelector("#keeper");
+  
+          clockCase.classList.add("showElementWhichCanBeClicked")
+          buckle.classList.add("showElementWhichCanBeClicked")
+          keeper.classList.add("showElementWhichCanBeClicked")
+
+          document.querySelector("#instructionImage").classList.remove("hidden")
+
+          // listeners on hovering case/buckle/keeper
+          clockCase.addEventListener("mouseover", function() {
+            clockCase.classList.remove("showElementWhichCanBeClicked")
+          })
+          buckle.addEventListener("mouseover", function() {
+            buckle.classList.remove("showElementWhichCanBeClicked")
+          })
+          keeper.addEventListener("mouseover", function() {
+            keeper.classList.remove("showElementWhichCanBeClicked")
+          })
+
+          // listeners on mouse out case/buckle/keeper
+          clockCase.addEventListener("mouseout", function() {
+            clockCase.classList.add("showElementWhichCanBeClicked")
+          })
+          buckle.addEventListener("mouseover", function() {
+            buckle.classList.add("showElementWhichCanBeClicked")
+          })
+          keeper.addEventListener("mouseover", function() {
+            keeper.classList.add("showElementWhichCanBeClicked")
+          })
+        }
+
+        if (firstTimeSelectingColor == true) {
+          console.log("SOMETHING")
+        }
+
       })
     );
-
     //setSelectedColor();
   }
 
@@ -369,6 +450,10 @@ function resetSettings() {
   const clockCase = document.querySelector("#case .caseColor");
   const buckle = document.querySelector("#buckle .buckleColor");
   const keeper = document.querySelector("#keeper .keeperColor");
+
+  clockCase.classList.remove("showElementWhichCanBeClicked")
+  buckle.classList.remove("showElementWhichCanBeClicked")
+  keeper.classList.remove("showElementWhichCanBeClicked")
 
   clockCase.style.fill = "#ffffff";
   buckle.style.fill = "#ffffff";

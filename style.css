@@ -70,10 +70,30 @@ body {
 }
 
 .cls-1:hover {
-  stroke: #89d0d0;
-  stroke-width: 15;
+  /* stroke: #89d0d0;
+  stroke-width: 15; */
+  stroke: #235555;
+  stroke-width: 7px;
+  filter: blur(0px);
+}
+
+.showElementWhichCanBeClicked {
+  /* stroke: #007d7d; */
+  /* stroke: #ffcc26; */
+  stroke: #f98225;
+  stroke-width: 9px;
   filter: blur(8px);
 }
+
+#instructionImage {
+  position: absolute;
+  width: 212px;
+  z-index: 99;
+  height: auto;
+  margin-top: 0.3em;
+  pointer-events: none;
+}
+
 
 /* .cls-1:hover {
   stroke: #131111;
@@ -102,11 +122,13 @@ body {
 }
 
 h3 {
+  font-family: 'Lato', sans-serif;
   margin-bottom: 0.5rem;
   font-size: 1em;
 }
 
 .mainTitle h3 {
+  font-family: 'Lato', sans-serif;
   margin-bottom: 0.5rem;
   font-size: 16px;
 }
@@ -189,6 +211,7 @@ h3 {
 }
 
 .featureTitle {
+  font-family: 'Lato', sans-serif;
   font-size: 1em;
 }
 
