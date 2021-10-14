@@ -17,7 +17,20 @@ async function start() {
   let response = await fetch("white-watch2.svg");
   let mySvgData = await response.text();
   document.querySelector("section").innerHTML = mySvgData;
+  registerButtons();
   colorsSelector();
+}
+
+function registerButtons() {
+  //reset button
+  document.querySelector(".buttonsContainer .reset").addEventListener("click", resetSettings);
+
+  //save button
+  document.querySelector(".buttonsContainer .save").addEventListener("click", saveSettings);
+
+  if (localStorage.getItem("selectedSettings")) {
+    getSelectedSettings();
+  }
 }
 
 function colorsSelector() {
@@ -337,4 +350,33 @@ function colorsSelector() {
       setSelectedKeeperColor();
     }
   }
+}
+
+//functions for buttons
+function resetSettings() {
+  console.log("resetSettings()");
+
+  //reset current colors
+  const clockCase = document.querySelector("#case .caseColor");
+  const buckle = document.querySelector("#buckle .buckleColor");
+  const keeper = document.querySelector("#keeper .keeperColor");
+
+  clockCase.style.fill = "#ffffff";
+  buckle.style.fill = "#ffffff";
+  keeper.style.fill = "#ffffff";
+
+  //reset selected section
+  document.querySelectorAll(".featureSymbol2").forEach((element) => element.remove());
+
+  //setting color selection to false
+  colorFeatures.clockCase = false;
+  colorFeatures.buckle = false;
+  colorFeatures.keeper = false;
+
+  //removing selected class
+  document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
+}
+
+function saveSettings() {
+  console.log("saveSettings()");
 }
