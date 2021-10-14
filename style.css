@@ -79,10 +79,10 @@ body {
 
 .showElementWhichCanBeClicked {
   /* stroke: #007d7d; */
-  /* stroke: #ffcc26; */
-  stroke: #f98225;
+  stroke: #ffcc26;
+  /* stroke: #f98225; */
   stroke-width: 9px;
-  filter: blur(8px);
+  filter: blur(3px);
 }
 
 #instructionImage {
@@ -427,7 +427,7 @@ button {
   }
 
   75% {
-    transform: scale(0.75)
+    transform: scale(0.75);
     opacity: 0%;
   }
   100% {

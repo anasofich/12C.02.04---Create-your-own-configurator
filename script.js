@@ -11,8 +11,8 @@ const colorFeatures = {
   keeper: false,
 };
 
-let previousStrap = ""
-let previousDial = ""
+let previousStrap = "";
+let previousDial = "";
 
 let firstTimeSelectingColor = false
 
@@ -24,17 +24,15 @@ async function start() {
   document.querySelector("section").innerHTML = mySvgData;
   registerButtons();
   colorsSelector();
-
-  init()
+  init();
 }
 
 function init() {
   const clockCase = document.querySelector("#case");
   clockCase.style.filter = "brightness(1.1)";
 
-  setStrapAndDialListeners()
+  setStrapAndDialListeners();
 }
-
 
 function registerButtons() {
   //reset button
@@ -44,8 +42,9 @@ function registerButtons() {
   document.querySelector(".buttonsContainer .save").addEventListener("click", saveSettings);
 }
 
+//COLOR SELECTOR FUNCTIONS
 function colorsSelector() {
-  console.log("colorsSelector()");
+  //console.log("colorsSelector()");
 
   //making variables for svg paths that will change color: case, buckle, keeper
   const clockCase = document.querySelector("#case .caseColor");
@@ -191,14 +190,14 @@ function colorsSelector() {
   }
 
   function setSelectedCaseColor() {
-    console.log("setSelectedCaseColor()");
+    //console.log("setSelectedCaseColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.clockCase === false) {
-      console.log("Case color has been chosen");
+      //console.log("Case color has been chosen");
 
       //toggling to true
       colorFeatures.clockCase = true;
@@ -234,7 +233,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("Case color has been changed");
+      //console.log("Case color has been changed");
 
       colorFeatures.clockCase = false;
 
@@ -276,14 +275,14 @@ function colorsSelector() {
   }
 
   function setSelectedBuckleColor() {
-    console.log("setSelectedBuckleColor()");
+    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.buckle === false) {
-      console.log("adding new color");
+      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.buckle = true;
@@ -319,7 +318,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("removing color");
+      //console.log("removing color");
 
       colorFeatures.buckle = false;
 
@@ -359,14 +358,14 @@ function colorsSelector() {
   }
 
   function setSelectedKeeperColor() {
-    console.log("setSelectedBuckleColor()");
+    //console.log("setSelectedBuckleColor()");
     let selectedColorPosition = document.querySelector(".colorSelector.colorSelected");
     //console.log(selectedColorPosition);
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
     //console.log(selectedColor);
 
     if (colorFeatures.keeper === false) {
-      console.log("adding new color");
+      //console.log("adding new color");
 
       //toggling to true
       colorFeatures.keeper = true;
@@ -402,7 +401,7 @@ function colorsSelector() {
         { duration: 500, easing: "ease-in-out" }
       );
     } else {
-      console.log("removing color");
+      //console.log("removing color");
 
       colorFeatures.keeper = false;
 
@@ -487,76 +486,80 @@ function saveSettings() {
 function setStrapAndDialListeners () {
   document.querySelectorAll(".strapOption").forEach(option => option.addEventListener("click", toggleOptionStrap))
   document.querySelectorAll(".dialOption").forEach(option => option.addEventListener("click", toggleOptionDial))
+//STRAP AND DIAL FUNCTIONS
+function setStrapAndDialListeners() {
+  document.querySelectorAll(".strapOption").forEach((option) => option.addEventListener("click", toggleOptionStrap));
+  document.querySelectorAll(".dialOption").forEach((option) => option.addEventListener("click", toggleOptionDial));
 }
 
 function toggleOptionStrap(event) {
   // target is a container for an element
-  const target = event.currentTarget
-  const feature = target.dataset.feature
-  let previouslySelected = ''
+  const target = event.currentTarget;
+  const feature = target.dataset.feature;
+  let previouslySelected = "";
 
   // toggle view on option buttons
   // delete class "selected" for previously selected option
   if (selectedStrap !== "") {
-    previouslySelected = selectedStrap
-    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
+    previouslySelected = selectedStrap;
+    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected");
   }
-  
-  selectedStrap = feature
+
+  selectedStrap = feature;
   // add class "selected" to currently selected item
-  document.querySelector(`#option-${feature}`).classList.add("selected")
+  document.querySelector(`#option-${feature}`).classList.add("selected");
 
-  showStrapOrDialInSelectedElements(target, feature)
-  changeToChosenStrapOrDial(feature, previouslySelected)
+  showStrapOrDialInSelectedElements(target, feature);
+  changeToChosenStrapOrDial(feature, previouslySelected);
 
-  previousStrap = selectedStrap
+  previousStrap = selectedStrap;
 }
 
 function toggleOptionDial(event) {
   // target is a container for an element
-  const target = event.currentTarget
-  const feature = target.dataset.feature
-  let previouslySelected = ''
+  const target = event.currentTarget;
+  const feature = target.dataset.feature;
+  let previouslySelected = "";
 
   // toggle view on option buttons
   // delete class "selected" for previously selected option
   if (selectedDial !== "") {
-    previouslySelected = selectedDial
-    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected")
+    previouslySelected = selectedDial;
+    document.querySelector(`#option-${previouslySelected}`).classList.remove("selected");
   }
   // add class "selected" to currently selected item
-  selectedDial = feature
-  document.querySelector(`#option-${feature}`).classList.add("selected")
+  selectedDial = feature;
+  document.querySelector(`#option-${feature}`).classList.add("selected");
 
-  showStrapOrDialInSelectedElements(target, feature)
-  changeToChosenStrapOrDial(feature, previouslySelected)
+  showStrapOrDialInSelectedElements(target, feature);
+  changeToChosenStrapOrDial(feature, previouslySelected);
 
-  previousDial = selectedDial
+  previousDial = selectedDial;
 }
 
 function changeToChosenStrapOrDial(feature, previous) {
   // when user choses for the first time
   if (previous !== "") {
-    document.getElementById(previous).classList.add("hidden")
+    document.getElementById(previous).classList.add("hidden");
   }
-  document.getElementById(feature).classList.remove("hidden")
+  document.getElementById(feature).classList.remove("hidden");
 }
 
 function showStrapOrDialInSelectedElements(target, feature) {
   // grab the child element (img) od selected option
-  const imgElement = target.childNodes[0]
+  const imgElement = target.childNodes[0];
   // create copy
-  const copyImgElement = imgElement.cloneNode(true)
+  const copyImgElement = imgElement.cloneNode(true);
   // removes all the classes for an element
-  copyImgElement.className = ""
-  copyImgElement.className = "featureSymbol"
+  copyImgElement.className = "";
+  copyImgElement.className = "featureSymbol";
 
-  let container
-  
+  let container;
+
   // deleting previously selected element
 
   if (feature.includes(`strap`)) {
-    container = document.getElementById("selectedOption-strap")
+    container = document.getElementById("selectedOption-strap");
     // remove previous selection
     if (previousStrap !== "") {
       let previousSelection = container.getElementsByTagName('img')
@@ -571,13 +574,13 @@ function showStrapOrDialInSelectedElements(target, feature) {
     //     previousSelection[0].remove()
     // })
     }
-     // animation for new element and appending it to the selected elements container
-     container = container.children[1]
-     setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
+    // animation for new element and appending it to the selected elements container
+    container = container.children[1];
+    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200);
   }
 
   if (feature.includes(`dial`)) {
-    container = document.getElementById("selectedOption-dial")
+    container = document.getElementById("selectedOption-dial");
     // remove previous selection
     if (previousDial !== "") {
       let previousSelection = container.getElementsByTagName('img')
@@ -592,31 +595,63 @@ function showStrapOrDialInSelectedElements(target, feature) {
     // }) 
     }
     // animation for new element and appending it to the selected elements container
-    container = container.children[1]
-    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200)
+    container = container.children[1];
+    setTimeout(animateElementIn.bind(null, target, container, copyImgElement), 200);
   }
-
 }
 
-
- function animateElementIn(start, end, element) {
-
+function animateElementIn(start, end, element) {
   //Create new featureElement and add it to the selected elements container
-  end.appendChild(element)
-  
+  end.appendChild(element);
+
   //FLIP- "animate-feature-in"
-  const startPosition = start.getBoundingClientRect()
-  const endPosition = element.getBoundingClientRect()
+  const startPosition = start.getBoundingClientRect();
+  const endPosition = element.getBoundingClientRect();
 
-  const diffx = startPosition.x - endPosition.x + "px"
-  const diffy = startPosition.y - endPosition.y + "px"
+  const diffx = startPosition.x - endPosition.x + "px";
+  const diffy = startPosition.y - endPosition.y + "px";
 
-  element.style.setProperty("--diffx", diffx)
-  element.style.setProperty("--diffy", diffy)
-
+  element.style.setProperty("--diffx", diffx);
+  element.style.setProperty("--diffy", diffy);
 
   //Animation feature in
-  element.classList.add("animate-feature-in") 
+  element.classList.add("animate-feature-in");
+}
+
+//functions for buttons
+function resetSettings() {
+  //console.log("resetSettings()");
+
+  //reset current strap and dial
+  document.querySelectorAll(".strap").forEach((element) => element.classList.add("hidden"));
+  document.querySelectorAll(".dial").forEach((element) => element.classList.add("hidden"));
+
+  //reset current colors
+  const clockCase = document.querySelector("#case .caseColor");
+  const buckle = document.querySelector("#buckle .buckleColor");
+  const keeper = document.querySelector("#keeper .keeperColor");
+
+  clockCase.style.fill = "#ffffff";
+  buckle.style.fill = "#ffffff";
+  keeper.style.fill = "#ffffff";
+
+  //reset selected section
+  document.querySelectorAll(".featureSymbol").forEach((element) => element.remove());
+  document.querySelectorAll(".featureSymbol2").forEach((element) => element.remove());
+
+  //setting color selection to false
+  colorFeatures.clockCase = false;
+  colorFeatures.buckle = false;
+  colorFeatures.keeper = false;
+
+  //removing selected class
+  document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
+  document.querySelectorAll(".strapOption.selected").forEach((element) => element.classList.remove("selected"));
+
+  document.querySelectorAll(".dialOption.selected").forEach((element) => element.classList.remove("selected"));
+  previousStrap = "";
+  previousDial = "";
+}
 
 }
 
@@ -652,4 +687,8 @@ function animateElementOut(start, end, element) {
     element.remove()
   }) 
 
+}
+function saveSettings() {
+  console.log("saveSettings()");
+  //console.log(document.querySelector("#case .caseColor").style.fill);
 }
