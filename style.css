@@ -217,6 +217,11 @@ h3 {
   max-width: 100%;
 }
 
+.strapOption:hover {
+  transform: scale(1.25);
+  transition: 0.1s;
+}
+
 .strapOption.selected {
   border: 1.5px solid #66bbbb;
   box-shadow: 0px 0px 10px 1px #89d0d0;
@@ -344,12 +349,10 @@ button {
   height: auto;
 }
 
-#selectedOption-strap , #selectedOption-dial {
+#selectedOption-strap,
+#selectedOption-dial {
   width: 40px;
 }
-  
-
-
 
 /* Animation classes */
 
@@ -371,7 +374,6 @@ button {
   }
 }
 
-
 .animate-feature-out {
   /* Animation for removing a feature */
   animation-name: animate-feature-out_kf;
@@ -389,7 +391,6 @@ button {
     transform: translate(0, 0) scale(1);
   }
 }
-
 
 .opacityToZero {
   animation-name: opacity-ani;
