@@ -3,8 +3,8 @@
 let selectedStrap = "";
 let selectedDial = "";
 
-let previousStrap = ""
-let previousDial = ""
+let previousStrap = "";
+let previousDial = "";
 
 let currentColor;
 
@@ -14,7 +14,7 @@ const colorFeatures = {
   keeper: false,
 };
 
-let colorMode = false
+let colorMode = false;
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -34,12 +34,11 @@ function init() {
   setStrapAndDialListeners();
 }
 
-
 //functions for straps and dials
 
 function setStrapAndDialListeners() {
-  document.querySelectorAll(".strapOption").forEach(option => option.addEventListener("click", toggleOptionStrap))
-  document.querySelectorAll(".dialOption").forEach(option => option.addEventListener("click", toggleOptionDial))
+  document.querySelectorAll(".strapOption").forEach((option) => option.addEventListener("click", toggleOptionStrap));
+  document.querySelectorAll(".dialOption").forEach((option) => option.addEventListener("click", toggleOptionDial));
 }
 
 function toggleOptionStrap(event) {
@@ -112,9 +111,9 @@ function showStrapOrDialInSelectedElements(target, feature) {
     container = document.getElementById("selectedOption-strap");
     // remove previous selection
     if (previousStrap !== "") {
-      let previousSelection = container.getElementsByTagName('img')
+      let previousSelection = container.getElementsByTagName("img");
 
-      animateElementOut(target, container, previousSelection[0])
+      animateElementOut(target, container, previousSelection[0]);
     }
     // animation for new element and appending it to the selected elements container
     container = container.children[1];
@@ -125,9 +124,9 @@ function showStrapOrDialInSelectedElements(target, feature) {
     container = document.getElementById("selectedOption-dial");
     // remove previous selection
     if (previousDial !== "") {
-      let previousSelection = container.getElementsByTagName('img')
+      let previousSelection = container.getElementsByTagName("img");
 
-      animateElementOut(target, container, previousSelection[0])
+      animateElementOut(target, container, previousSelection[0]);
     }
     // animation for new element and appending it to the selected elements container
     container = container.children[1];
@@ -154,34 +153,31 @@ function animateElementIn(start, end, element) {
 }
 
 function animateElementOut(start, end, element) {
+  element.classList.remove("animate-feature-in");
 
-  element.classList.remove("animate-feature-in") 
-  
   //FLIP- "animate-feature-out"
-  const endPosition = element.getBoundingClientRect()
-  const startPosition = start.getBoundingClientRect()
+  const endPosition = element.getBoundingClientRect();
+  const startPosition = start.getBoundingClientRect();
 
-  const diffx = startPosition.x - endPosition.x + "px"
-  const diffy = startPosition.y - endPosition.y + "px"
+  const diffx = startPosition.x - endPosition.x + "px";
+  const diffy = startPosition.y - endPosition.y + "px";
 
-  element.style.setProperty("--diffx", diffx)
-  element.style.setProperty("--diffy", diffy)
+  element.style.setProperty("--diffx", diffx);
+  element.style.setProperty("--diffy", diffy);
 
-  element.offsetHeight
+  element.offsetHeight;
 
   //Animation feature out
-  element.classList.add("animate-feature-out") 
+  element.classList.add("animate-feature-out");
 
   //when animation is complete, remove element from DOM
-  element.addEventListener("animationend", function() {
-    element.remove()
-  }) 
+  element.addEventListener("animationend", function () {
+    element.remove();
+  });
 }
-
 
 //color selector functions
 function colorsSelector() {
-
   //making variables for svg paths that will change color: case, buckle, keeper
   const clockCase = document.querySelector("#case .caseColor");
   const buckle = document.querySelector("#buckle .buckleColor");
@@ -208,21 +204,21 @@ function colorsSelector() {
     setColor(event.target, currentColor);
     setSelectedCaseColor();
 
-    hideInstructionAndSelection()
+    hideInstructionAndSelection();
   });
 
   buckle.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedBuckleColor();
 
-    hideInstructionAndSelection()
+    hideInstructionAndSelection();
   });
 
   keeper.addEventListener("click", (event) => {
     setColor(event.target, currentColor);
     setSelectedKeeperColor();
 
-    hideInstructionAndSelection()
+    hideInstructionAndSelection();
   });
 
   //reading current color from selected color
@@ -247,7 +243,6 @@ function colorsSelector() {
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
 
     if (colorFeatures.clockCase === false) {
-
       //toggling to true
       colorFeatures.clockCase = true;
 
@@ -279,7 +274,6 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-
     } else {
       colorFeatures.clockCase = false;
 
@@ -323,7 +317,6 @@ function colorsSelector() {
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
 
     if (colorFeatures.buckle === false) {
-
       //toggling to true
       colorFeatures.buckle = true;
 
@@ -355,7 +348,6 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-
     } else {
       colorFeatures.buckle = false;
 
@@ -399,7 +391,6 @@ function colorsSelector() {
     let selectedColor = document.querySelector(".colorSelector.colorSelected").style.backgroundColor;
 
     if (colorFeatures.keeper === false) {
-
       //toggling to true
       colorFeatures.keeper = true;
 
@@ -431,9 +422,7 @@ function colorsSelector() {
         ],
         { duration: 500, easing: "ease-in-out" }
       );
-    } 
-    
-    else {
+    } else {
       colorFeatures.keeper = false;
 
       const removingColor = document.querySelector(".selectedKeeper div");
@@ -474,7 +463,7 @@ function colorsSelector() {
   function setupClockClickListeners() {
     document.querySelectorAll(".colorSelector").forEach((element) =>
       element.addEventListener("click", () => {
-        colorMode = true
+        colorMode = true;
         removeSelectedClass();
         element.classList.add("colorSelected");
 
@@ -482,11 +471,11 @@ function colorsSelector() {
         const buckle = document.querySelector("#buckle");
         const keeper = document.querySelector("#keeper");
 
-        clockCase.classList.add("showElementWhichCanBeClicked")
-        buckle.classList.add("showElementWhichCanBeClicked")
-        keeper.classList.add("showElementWhichCanBeClicked")
+        clockCase.classList.add("showElementWhichCanBeClicked");
+        buckle.classList.add("showElementWhichCanBeClicked");
+        keeper.classList.add("showElementWhichCanBeClicked");
 
-        document.querySelector("#instructionImage").classList.remove("hidden")
+        document.querySelector("#instructionImage").classList.remove("hidden");
       })
     );
   }
@@ -497,49 +486,48 @@ function colorsSelector() {
     const keeper = document.querySelector("#keeper");
 
     // listeners on hovering case/buckle/keeper
-    clockCase.addEventListener("mouseover", function() {
-      clockCase.classList.remove("showElementWhichCanBeClicked")
-    })
-    buckle.addEventListener("mouseover", function() {
-      buckle.classList.remove("showElementWhichCanBeClicked")
-    })
-    keeper.addEventListener("mouseover", function() {
-      keeper.classList.remove("showElementWhichCanBeClicked")
-    })
+    clockCase.addEventListener("mouseover", function () {
+      clockCase.classList.remove("showElementWhichCanBeClicked");
+    });
+    buckle.addEventListener("mouseover", function () {
+      buckle.classList.remove("showElementWhichCanBeClicked");
+    });
+    keeper.addEventListener("mouseover", function () {
+      keeper.classList.remove("showElementWhichCanBeClicked");
+    });
 
     // listeners on mouse out case/buckle/keeper
-    clockCase.addEventListener("mouseout", function() {
-      if(colorMode) {
-        clockCase.classList.add("showElementWhichCanBeClicked")
+    clockCase.addEventListener("mouseout", function () {
+      if (colorMode) {
+        clockCase.classList.add("showElementWhichCanBeClicked");
       }
-    })
-    buckle.addEventListener("mouseover", function() {
-      if(colorMode) {
-        buckle.classList.add("showElementWhichCanBeClicked")
+    });
+    buckle.addEventListener("mouseover", function () {
+      if (colorMode) {
+        buckle.classList.add("showElementWhichCanBeClicked");
       }
-    })
-    keeper.addEventListener("mouseover", function() {
-      if(colorMode) {
-        keeper.classList.add("showElementWhichCanBeClicked")
+    });
+    keeper.addEventListener("mouseover", function () {
+      if (colorMode) {
+        keeper.classList.add("showElementWhichCanBeClicked");
       }
-    })
+    });
   }
 }
 
-  function hideInstructionAndSelection() {
-  document.querySelector("#instructionImage").classList.add("hidden")
+function hideInstructionAndSelection() {
+  document.querySelector("#instructionImage").classList.add("hidden");
 
   const clockCase = document.querySelector("#case");
   const buckle = document.querySelector("#buckle");
   const keeper = document.querySelector("#keeper");
 
-  clockCase.classList.remove("showElementWhichCanBeClicked")
-  buckle.classList.remove("showElementWhichCanBeClicked")
-  keeper.classList.remove("showElementWhichCanBeClicked")
+  clockCase.classList.remove("showElementWhichCanBeClicked");
+  buckle.classList.remove("showElementWhichCanBeClicked");
+  keeper.classList.remove("showElementWhichCanBeClicked");
 
-  colorMode = false
+  colorMode = false;
 }
-
 
 //functions for "Reset" and "Save" buttons
 
@@ -552,7 +540,6 @@ function registerButtons() {
 }
 
 function resetSettings() {
-
   //reset current strap and dial
   document.querySelectorAll(".strap").forEach((element) => element.classList.add("hidden"));
   document.querySelectorAll(".dial").forEach((element) => element.classList.add("hidden"));
@@ -562,9 +549,9 @@ function resetSettings() {
   const buckle = document.querySelector("#buckle .buckleColor");
   const keeper = document.querySelector("#keeper .keeperColor");
 
-  clockCase.classList.remove("showElementWhichCanBeClicked")
-  buckle.classList.remove("showElementWhichCanBeClicked")
-  keeper.classList.remove("showElementWhichCanBeClicked")
+  clockCase.classList.remove("showElementWhichCanBeClicked");
+  buckle.classList.remove("showElementWhichCanBeClicked");
+  keeper.classList.remove("showElementWhichCanBeClicked");
 
   clockCase.style.fill = "#ffffff";
   buckle.style.fill = "#ffffff";
@@ -582,13 +569,14 @@ function resetSettings() {
   //removing selected class
   document.querySelectorAll(".colorSelector").forEach((element) => element.classList.remove("colorSelected"));
   document.querySelectorAll(".strapOption.selected").forEach((element) => element.classList.remove("selected"));
+  document.querySelectorAll(".dialOption.selected").forEach((element) => element.classList.remove("selected"));
 
   // resetting global variables
   selectedStrap = "";
   selectedDial = "";
 
-  previousStrap = ""
-  previousDial = ""
+  previousStrap = "";
+  previousDial = "";
 }
 
 function saveSettings() {
